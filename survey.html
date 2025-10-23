@@ -675,6 +675,67 @@
             background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
             z-index: 9999;
             transition: width 0.1s ease;
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+        
+        /* Progress Indicator */
+        .progress-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.5s ease 1s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .progress-indicator:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .progress-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: conic-gradient(var(--secondary-color) calc(var(--progress) * 1%), var(--border-color) calc(var(--progress) * 1%) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .progress-circle::before {
+            content: '';
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: white;
+        }
+        
+        .progress-percentage {
+            position: relative;
+            z-index: 1;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--primary-color);
         }
         
         /* Section Numbers */
@@ -834,6 +895,47 @@
                 justify-content: space-between;
                 width: 100%;
             }
+            
+            .progress-indicator {
+                top: 10px;
+                right: 10px;
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+            
+            .progress-circle {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .progress-circle::before {
+                width: 22px;
+                height: 22px;
+            }
+            
+            .fab-container {
+                bottom: 80px;
+                right: 15px;
+            }
+            
+            .fab {
+                width: 48px;
+                height: 48px;
+                font-size: 1.3rem;
+            }
+            
+            .submit-section {
+                padding: 40px 24px;
+            }
+            
+            .submit-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .submit-btn {
+                padding: 14px 32px;
+                font-size: 1rem;
+            }
         }
         
         /* Smooth transitions for all interactive elements */
@@ -855,6 +957,27 @@
     </style>
 </head>
 <body>
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-circle" style="--progress: 0">
+            <span class="progress-percentage">0%</span>
+        </div>
+        <span>Progress</span>
+    </div>
+    
+    <!-- Scroll Progress Bar -->
+    <div class="progress-bar" style="width: 0%"></div>
+    
+    <!-- Floating Action Buttons -->
+    <div class="fab-container">
+        <button class="fab help" onclick="toggleHelp()" title="Keyboard Shortcuts (Press ?)">
+            ?
+        </button>
+        <button class="fab save" onclick="saveProgress()" title="Save Progress">
+            💾
+        </button>
+    </div>
+    
     <header>
         <div class="container">
             <div class="badge">2025 Research Study</div>
@@ -882,7 +1005,7 @@
         </div>
 
         <div class="section">
-            <h2><span class="section-number">1</span>Respondent & Organization Profile</h2>
+            <h2><span class="section-number">1</span> 👤 Respondent & Organization Profile</h2>
             
             <div class="question">
                 <h3>Your role – What is your position?</h3>
@@ -955,7 +1078,7 @@
         </div>
 
         <div class="section">
-            <h2><span class="section-number">2</span>Awareness & Credibility of Online Degrees</h2>
+            <h2><span class="section-number">2</span> 🎓 Awareness & Credibility of Online Degrees</h2>
             
             <div class="question">
                 <h3>Degree modality awareness – Do you typically know whether a candidate's degree was earned online or on‑campus during the hiring process?</h3>
@@ -965,7 +1088,7 @@
                     <li>No – we don't track this</li>
                 </ul>
                 <div class="context-box">
-                    <strong>Context:</strong> Roughly 90% of employers globally report that they are aware of whether a degree was delivered online before an employee starts <a href="https://bestcolleges.com" target="_blank">(bestcolleges.com)</a>.
+                    <strong>Context:</strong> Roughly 90% of employers globally report that they are aware of whether a degree was delivered online before an employee starts. Source: <a href="https://www.gmac.com/market-intelligence-and-research/market-research/corporate-recruiters-survey" target="_blank">GMAC Corporate Recruiters Survey 2025</a>.
                 </div>
             </div>
 
@@ -1013,7 +1136,7 @@
         </div>
 
         <div class="section">
-            <h2><span class="section-number">3</span>Hiring & Compensation Practices</h2>
+            <h2><span class="section-number">3</span> 💼 Hiring & Compensation Practices</h2>
             
             <div class="question">
                 <h3>Screening influence – When reviewing resumes, how often does the modality of a degree (online vs. in‑person) influence your decision to shortlist a candidate?</h3>
@@ -1034,7 +1157,7 @@
                     <li>Depends on institution/program</li>
                 </ul>
                 <div class="context-box">
-                    <strong>Context:</strong> NACE's 2024 Job Outlook survey found that 100% of employers who captured degree modality reported paying online‑degree hires the same starting salary as those with in‑person degrees <a href="https://naceweb.org" target="_blank">(naceweb.org)</a>.
+                    <strong>Context:</strong> NACE's 2024 Job Outlook survey found that 100% of employers who captured degree modality reported paying online‑degree hires the same starting salary as those with in‑person degrees. Source: <a href="https://www.naceweb.org/docs/default-source/default-document-library/2023/publication/research-report/2024-nace-job-outlook.pdf" target="_blank">NACE Job Outlook 2024</a>.
                 </div>
             </div>
 
@@ -1046,7 +1169,7 @@
                     <li>Unsure</li>
                 </ul>
                 <div class="context-box">
-                    <strong>Context:</strong> Among employers that capture modality, 87.4% have hired online‑degree graduates <a href="https://naceweb.org" target="_blank">(naceweb.org)</a>.
+                    <strong>Context:</strong> Among employers that capture modality, 87.4% have hired online‑degree graduates. Source: <a href="https://www.naceweb.org/docs/default-source/default-document-library/2023/publication/research-report/2024-nace-job-outlook.pdf" target="_blank">NACE Job Outlook 2024</a>.
                 </div>
             </div>
 
@@ -1129,7 +1252,7 @@
         </div>
 
         <div class="section">
-            <h2><span class="section-number">4</span>Perception of Graduate vs. Undergraduate Online Programs</h2>
+            <h2><span class="section-number">4</span> 📊 Perception of Graduate vs. Undergraduate Online Programs</h2>
             
             <div class="question">
                 <h3>Undergraduate vs. graduate credibility – Do you view online undergraduate degrees and online graduate degrees (e.g., MBA, master's) differently?</h3>
@@ -1152,7 +1275,7 @@
                     <li>Strongly disagree</li>
                 </ul>
                 <div class="context-box">
-                    <strong>Context:</strong> In the 2025 GMAC Corporate Recruiters Survey, only 5% of U.S. employers strongly agreed and 23% agreed with this statement <a href="https://bestcolleges.com" target="_blank">(bestcolleges.com)</a>.
+                    <strong>Context:</strong> In the 2025 GMAC Corporate Recruiters Survey, only 5% of U.S. employers strongly agreed and 23% agreed with this statement. Source: <a href="https://www.bestcolleges.com/news/employers-embrace-online-degrees-gmac-corporate-recruiters/" target="_blank">BestColleges Survey Analysis</a>.
                 </div>
             </div>
 
@@ -1164,7 +1287,7 @@
         </div>
 
         <div class="section">
-            <h2><span class="section-number">5</span>Microcredentials & Upskilling</h2>
+            <h2><span class="section-number">5</span> 🎖️ Microcredentials & Upskilling</h2>
             
             <div class="question">
                 <h3>Value of microcredentials – Are you more likely to hire a candidate with a short microcredential (e.g., graduate certificate or digital badge) compared with someone with a full degree?</h3>
@@ -1221,7 +1344,7 @@
         </div>
 
         <div class="section">
-            <h2><span class="section-number">6</span>Learning & Development Investment</h2>
+            <h2><span class="section-number">6</span> 📚 Learning & Development Investment</h2>
             
             <div class="question">
                 <h3>Formal training programs – Does your organization have a formal employee training program?</h3>
@@ -1231,7 +1354,7 @@
                     <li>No formal program</li>
                 </ul>
                 <div class="context-box">
-                    <strong>Context:</strong> Organizations with comprehensive training programs generate 218% higher income per employee than those without formalized training <a href="https://devlinpeck.com" target="_blank">(devlinpeck.com)</a>.
+                    <strong>Context:</strong> Organizations with comprehensive training programs generate 218% higher income per employee than those without formalized training. Source: <a href="https://www.devlinpeck.com/content/employee-training-statistics" target="_blank">Devlin Peck Employee Training Statistics</a>.
                 </div>
             </div>
 
@@ -1244,7 +1367,7 @@
                     <li>Unsure</li>
                 </ul>
                 <div class="context-box">
-                    <strong>Context:</strong> Surveys show that 68% of employees prefer to learn and train at work <a href="https://devlinpeck.com" target="_blank">(devlinpeck.com)</a>.
+                    <strong>Context:</strong> Surveys show that 68% of employees prefer to learn and train at work. Source: <a href="https://www.devlinpeck.com/content/employee-training-statistics" target="_blank">Devlin Peck Employee Training Statistics</a>.
                 </div>
             </div>
 
@@ -1257,7 +1380,7 @@
                     <li>Unsure</li>
                 </ul>
                 <div class="context-box">
-                    <strong>Context:</strong> Around 59% of employees say training directly improves their performance <a href="https://devlinpeck.com" target="_blank">(devlinpeck.com)</a>.
+                    <strong>Context:</strong> Around 59% of employees say training directly improves their performance. Source: <a href="https://www.devlinpeck.com/content/employee-training-statistics" target="_blank">Devlin Peck Employee Training Statistics</a>.
                 </div>
             </div>
 
@@ -1273,7 +1396,7 @@
         </div>
 
         <div class="section">
-            <h2><span class="section-number">7</span>Future Outlook & Employer Expectations</h2>
+            <h2><span class="section-number">7</span> 🔮 Future Outlook & Employer Expectations</h2>
             
             <div class="question">
                 <h3>Future importance of online education – How important do you think online education will be for workforce development in the next five years?</h3>
@@ -1317,7 +1440,7 @@
         </div>
 
         <div class="section">
-            <h2><span class="section-number">8</span>Featured Quote Opportunity</h2>
+            <h2><span class="section-number">8</span> 💬 Featured Quote Opportunity</h2>
             
             <div class="context-box" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-color: #3b82f6;">
                 <p><strong>📣 Share Your Voice:</strong> We're looking to feature insights from HR leaders and hiring managers in our research publication. Your perspective would add valuable real-world context to our study.</p>
@@ -1453,10 +1576,29 @@
         </div>
     </div>
 
+    <!-- Submit Section -->
+    <div class="container">
+        <div class="submit-section">
+            <div class="content">
+                <h2>🎯 Ready to Submit?</h2>
+                <p>Thank you for taking the time to complete this comprehensive survey. Your insights are invaluable in understanding the evolving landscape of online education in the workplace.</p>
+                <button class="submit-btn" onclick="submitSurvey()">
+                    Submit Survey
+                </button>
+                <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
+                    📧 Results will be sent to your email | ⏱️ Average completion time: 12-15 minutes
+                </p>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <p><strong>Thank you for your participation.</strong></p>
             <p>Your responses will help us understand evolving perceptions of online learning and inform future partnerships between employers and educational institutions.</p>
+            <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-light);">
+                © 2025 UAGC Research Study | <a href="#" style="color: var(--secondary-color); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--secondary-color); text-decoration: none;">Contact Us</a>
+            </p>
         </div>
     </footer>
 
@@ -1495,6 +1637,126 @@
         
         .back-to-top:active {
             transform: translateY(-3px);
+        }
+        
+        /* Submit Section */
+        .submit-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 40px;
+            margin: 60px 0 40px 0;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .submit-section .content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .submit-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .submit-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .submit-btn {
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 18px 48px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .submit-btn::after {
+            content: '→';
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .submit-btn:hover::after {
+            transform: translateX(5px);
+        }
+        
+        /* Floating Action Buttons */
+        .fab-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .fab {
+            width: 56px;
+            height: 56px;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            font-size: 1.5rem;
+        }
+        
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--secondary-color);
+        }
+        
+        .fab.save {
+            background: linear-gradient(135deg, var(--success-color), #059669);
+            color: white;
+            border: none;
+        }
+        
+        .fab.help {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
         }
     </style>
 
@@ -1595,7 +1857,150 @@
                 
                 // Mark this button as selected
                 this.setAttribute('data-selected', 'true');
+                updateProgress();
             });
+        });
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalQuestions = document.querySelectorAll('.question').length;
+            let answeredQuestions = 0;
+            
+            // Count answered questions
+            document.querySelectorAll('.question').forEach(question => {
+                const hasSelection = question.querySelector('[data-selected="true"]');
+                const hasInput = question.querySelector('.text-input, .text-area');
+                
+                if (hasSelection || (hasInput && hasInput.value.trim() !== '')) {
+                    answeredQuestions++;
+                }
+            });
+            
+            const progress = Math.round((answeredQuestions / totalQuestions) * 100);
+            
+            // Update progress indicator
+            const progressCircle = document.querySelector('.progress-circle');
+            const progressPercentage = document.querySelector('.progress-percentage');
+            if (progressCircle && progressPercentage) {
+                progressCircle.style.setProperty('--progress', progress);
+                progressPercentage.textContent = progress + '%';
+            }
+        }
+
+        // Update progress when inputs change
+        document.querySelectorAll('.text-input, .text-area').forEach(input => {
+            input.addEventListener('input', updateProgress);
+        });
+
+        // Save Progress
+        function saveProgress() {
+            const responses = {};
+            let questionIndex = 0;
+            
+            document.querySelectorAll('.question').forEach(question => {
+                const questionText = question.querySelector('h3').textContent;
+                const selectedOption = question.querySelector('[data-selected="true"]');
+                const textInput = question.querySelector('.text-input, .text-area');
+                
+                if (selectedOption) {
+                    responses[questionIndex] = {
+                        question: questionText,
+                        answer: selectedOption.textContent
+                    };
+                } else if (textInput && textInput.value.trim() !== '') {
+                    responses[questionIndex] = {
+                        question: questionText,
+                        answer: textInput.value
+                    };
+                }
+                questionIndex++;
+            });
+            
+            localStorage.setItem('surveyProgress', JSON.stringify(responses));
+            
+            // Show confirmation
+            const saveBtn = document.querySelector('.fab.save');
+            const originalContent = saveBtn.innerHTML;
+            saveBtn.innerHTML = '✓';
+            saveBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            
+            setTimeout(() => {
+                saveBtn.innerHTML = originalContent;
+            }, 2000);
+        }
+
+        // Submit Survey
+        function submitSurvey() {
+            const totalQuestions = document.querySelectorAll('.question').length;
+            let answeredQuestions = 0;
+            
+            document.querySelectorAll('.question').forEach(question => {
+                const hasSelection = question.querySelector('[data-selected="true"]');
+                const hasInput = question.querySelector('.text-input, .text-area');
+                
+                if (hasSelection || (hasInput && hasInput.value.trim() !== '')) {
+                    answeredQuestions++;
+                }
+            });
+            
+            const completionPercentage = Math.round((answeredQuestions / totalQuestions) * 100);
+            
+            if (completionPercentage < 80) {
+                alert(`Survey is ${completionPercentage}% complete. Please answer at least 80% of questions before submitting.\n\nYou've answered ${answeredQuestions} out of ${totalQuestions} questions.`);
+                return;
+            }
+            
+            // Simulate submission
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            setTimeout(() => {
+                alert('✅ Survey submitted successfully!\n\nThank you for your participation. Your responses have been recorded and will help us understand the evolving landscape of online education.');
+                submitBtn.textContent = 'Submitted ✓';
+                submitBtn.style.background = 'var(--success-color)';
+                submitBtn.style.color = 'white';
+                
+                // Clear saved progress
+                localStorage.removeItem('surveyProgress');
+            }, 1500);
+        }
+
+        // Keyboard Shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Save: Ctrl/Cmd + S
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                saveProgress();
+            }
+            
+            // Help: ? key
+            if (e.key === '?' && !e.ctrlKey && !e.metaKey) {
+                toggleHelp();
+            }
+        });
+
+        function toggleHelp() {
+            alert(`⌨️  Keyboard Shortcuts:\n\n` +
+                  `Ctrl/Cmd + S  →  Save Progress\n` +
+                  `Ctrl/Cmd + P  →  Print Survey\n` +
+                  `?  →  Show this help\n` +
+                  `Tab  →  Navigate between questions\n` +
+                  `Enter/Space  →  Select option\n` +
+                  `Arrow Keys  →  Navigate options`);
+        }
+
+        // Load saved progress on page load
+        window.addEventListener('load', () => {
+            const saved = localStorage.getItem('surveyProgress');
+            if (saved) {
+                const shouldRestore = confirm('Would you like to restore your previous progress?');
+                if (shouldRestore) {
+                    // Restore logic could be implemented here
+                    alert('Progress restoration feature - coming soon!');
+                }
+            }
+            updateProgress();
         });
     </script>
 </body>

@@ -970,9 +970,6 @@
     
     <!-- Floating Action Buttons -->
     <div class="fab-container">
-        <button class="fab help" onclick="toggleHelp()" title="Keyboard Shortcuts (Press ?)">
-            ?
-        </button>
         <button class="fab save" onclick="saveProgress()" title="Save Progress">
             💾
         </button>
@@ -1966,29 +1963,7 @@
             }, 1500);
         }
 
-        // Keyboard Shortcuts
-        document.addEventListener('keydown', (e) => {
-            // Save: Ctrl/Cmd + S
-            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-                e.preventDefault();
-                saveProgress();
-            }
-            
-            // Help: ? key
-            if (e.key === '?' && !e.ctrlKey && !e.metaKey) {
-                toggleHelp();
-            }
-        });
 
-        function toggleHelp() {
-            alert(`⌨️  Keyboard Shortcuts:\n\n` +
-                  `Ctrl/Cmd + S  →  Save Progress\n` +
-                  `Ctrl/Cmd + P  →  Print Survey\n` +
-                  `?  →  Show this help\n` +
-                  `Tab  →  Navigate between questions\n` +
-                  `Enter/Space  →  Select option\n` +
-                  `Arrow Keys  →  Navigate options`);
-        }
 
         // Load saved progress on page load
         window.addEventListener('load', () => {

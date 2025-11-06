@@ -198,7 +198,7 @@ _(e.g., healthcare, technology, manufacturing, retail, public sector, etc.)_
 - [ ] Unsure
 
 ### Open comments – Please share any additional thoughts on the role of online education, microcredentials, or training in shaping your workforce.
-_(Open text)_
+_Optional: Share any additional insights, concerns, or experiences that weren't captured in previous questions (no length limit)_
 
 ---
 
@@ -218,7 +218,7 @@ We're looking to feature insights from HR leaders and hiring managers in our res
 - The future of online education in your industry
 - Success stories of online degree holders at your company
 
-_(Open text - please keep to 2-3 sentences)_
+_**Please limit to 2-3 sentences.** Your quote may be featured in our published research with your name, title, and company (pending your approval)._
 
 ### Contact Information (Optional - only if you'd like to be featured):
 - **Name:**

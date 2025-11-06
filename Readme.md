@@ -1,16 +1,20 @@
-# HR Manager Survey – Online Learning vs. Traditional Education (2025 Employer Study)
+# HR Manager Survey – Online Learning vs. Traditional Education (2025 Employer Study) - v2
+
+> **Version 2 Notes:** This is the revised version of the survey based on stakeholder feedback. Key changes include:
+> - Reduced survey length by 20% (8 questions removed)
+> - Removed leading statistics from introduction and context boxes
+> - Simplified organization size categories to 3 tiers
+> - Focused Section 3 on functional openness only
+> - Streamlined Section 4 to one open-ended question
+> - See [SURVEY_V2_CHANGES.md](SURVEY_V2_CHANGES.md) for complete details
 
 ## Introduction
 
 This survey is part of a 2025 research study exploring how employers perceive online education relative to traditional, in‑person programs.
 
-Recent research shows that:
-- **87.4%** of employers who track degree modality have hired graduates with online degrees
-- **100%** of those employers pay online‑degree graduates the same starting salary as their peers who studied in person ([NACE Job Outlook 2024](https://www.naceweb.org/docs/default-source/default-document-library/2023/publication/research-report/2024-nace-job-outlook.pdf))
-- At a global level, more than half of employers (**55%**) say they value graduates of online or predominantly online programs just as much as those from in‑person programs ([GMAC Corporate Recruiters Survey 2025](https://www.gmac.com/market-intelligence-and-research/research-library/employment-outlook/2025-corporate-recruiters-survey-report))
-- However, only **5%** of U.S. employers strongly agree and **23%** agree that their company values graduates of online and in‑person programs equally ([BestColleges Survey Analysis](https://www.bestcolleges.com/news/employers-embrace-online-degrees-gmac-corporate-recruiters/))
+We are interested in understanding your organization's perspectives and practices regarding candidates and employees with online degrees. Your honest feedback will help inform our understanding of current trends in the workplace.
 
-This survey aims to understand where your organization fits within these trends. Your responses will remain confidential and will be aggregated for analysis.
+Your responses will remain confidential and will be aggregated for analysis. The survey should take approximately 10-15 minutes to complete.
 
 ---
 
@@ -27,10 +31,9 @@ This survey aims to understand where your organization fits within these trends.
 _(e.g., healthcare, technology, manufacturing, retail, public sector, etc.)_
 
 ### Organization size – Number of employees:
-- [ ] 1–49
-- [ ] 50–249
-- [ ] 250–999
-- [ ] 1,000+
+- [ ] Under 1,000 employees
+- [ ] 1,000-4,999 employees
+- [ ] 5,000+ employees
 
 ### Hiring frequency – How often does your organization recruit for positions that require a college degree?
 - [ ] Rarely
@@ -67,8 +70,6 @@ _(e.g., healthcare, technology, manufacturing, retail, public sector, etc.)_
 - [ ] Sometimes – it occasionally comes up
 - [ ] No – we don't track this
 
-> **Context:** Roughly 90% of employers globally report that they are aware of whether a degree was delivered online before an employee starts. Source: GMAC (2025). *Corporate Recruiters Survey Report*. [Read more](https://www.gmac.com/market-intelligence-and-research/market-research/corporate-recruiters-survey)
-
 ### Perceived credibility – How credible do you consider online degrees compared with traditional, in‑person degrees?
 - [ ] Much less credible
 - [ ] Slightly less credible
@@ -85,46 +86,9 @@ _(e.g., healthcare, technology, manufacturing, retail, public sector, etc.)_
 - [ ] Personal bias/trust
 - [ ] Other (please specify)
 
-### Interview practices – Do you ask candidates whether their degree was earned online during interviews?
-- [ ] Yes, always
-- [ ] Sometimes
-- [ ] No, never
-
-### Record‑keeping – Does your HR information system record whether new hires' degrees are from online or in‑person programs?
-- [ ] Yes, always
-- [ ] Sometimes
-- [ ] No
-
 ---
 
 ## Section 3 – Hiring & Compensation Practices
-
-### Screening influence – When reviewing resumes, how often does the modality of a degree (online vs. in‑person) influence your decision to shortlist a candidate?
-- [ ] Never
-- [ ] Occasionally
-- [ ] Often
-- [ ] Always
-
-### Compensation parity – Does your organization offer the same starting salary to candidates with online degrees as to those with traditional degrees?
-- [ ] Yes – we pay the same
-- [ ] No – we pay online‑degree candidates less
-- [ ] No – we pay online‑degree candidates more
-- [ ] Depends on institution/program
-
-> **Context:** NACE's 2024 Job Outlook survey found that 100% of employers who captured degree modality reported paying online‑degree hires the same starting salary as those with in‑person degrees. Source: NACE (2024). *Job Outlook 2024*. [View report](https://www.naceweb.org/docs/default-source/default-document-library/2023/publication/research-report/2024-nace-job-outlook.pdf)
-
-### Hiring history – Has your organization hired candidates with online degrees in the past 12 months?
-- [ ] Yes
-- [ ] No
-- [ ] Unsure
-
-> **Context:** Among employers that capture modality, 87.4% have hired online‑degree graduates. Source: NACE (2024). *Job Outlook 2024*. [View report](https://www.naceweb.org/docs/default-source/default-document-library/2023/publication/research-report/2024-nace-job-outlook.pdf)
-
-### Leadership roles – Would you consider candidates with fully online degrees for leadership or managerial positions?
-- [ ] Yes, regardless of institution
-- [ ] Yes, but only from reputable/accredited institutions
-- [ ] No
-- [ ] Unsure
 
 ### Functional openness – Please rate your openness to hiring candidates with online degrees in the following functional areas (1 = Not open, 5 = Very open):
 - Information Technology (IT)
@@ -139,24 +103,7 @@ _(e.g., healthcare, technology, manufacturing, retail, public sector, etc.)_
 
 ## Section 4 – Perception of Graduate vs. Undergraduate Online Programs
 
-### Undergraduate vs. graduate credibility – Do you view online undergraduate degrees and online graduate degrees (e.g., MBA, master's) differently?
-- [ ] Yes – undergraduate online programs are less credible
-- [ ] Yes – graduate online programs are less credible
-- [ ] No – both are viewed similarly
-- [ ] Unsure
-
-### Equality statement – Please indicate your level of agreement with the statement:
-**"Our company values graduates of online and in‑person programs equally."**
-
-- [ ] Strongly agree
-- [ ] Agree
-- [ ] Neutral
-- [ ] Disagree
-- [ ] Strongly disagree
-
-> **Context:** In the 2025 GMAC Corporate Recruiters Survey, only 5% of U.S. employers strongly agreed and 23% agreed with this statement. Source: GMAC (2025). Analysis by Sullivan, P. in *BestColleges*. [Read article](https://www.bestcolleges.com/news/employers-embrace-online-degrees-gmac-corporate-recruiters/)
-
-### Rationale for equality rating – Please briefly explain why you chose your answer to the statement above.
+### Perception of online degrees – Please briefly explain your organization's overall view of online degrees compared to traditional degrees.
 _(Open text)_
 
 ---
@@ -205,15 +152,11 @@ _(Open text)_
 - [ ] Somewhat – occasional or ad‑hoc training
 - [ ] No formal program
 
-> **Context:** Organizations with comprehensive training programs generate 218% higher income per employee than those without formalized training. Source: Peck, D. (2025). "Employee training and development statistics." *Devlin Peck*. [Read guide](https://www.devlinpeck.com/content/employee-training-statistics)
-
 ### Employee training preference – How do your employees typically prefer to learn?
 - [ ] On‑the‑job training (hands‑on)
 - [ ] Formal training sessions (online or in person)
 - [ ] Hybrid mix of on‑the‑job and formal sessions
 - [ ] Unsure
-
-> **Context:** Surveys show that 68% of employees prefer to learn and train at work. Source: Peck, D. (2025). "Employee training and development statistics." *Devlin Peck*. [Read guide](https://www.devlinpeck.com/content/employee-training-statistics)
 
 ### Perceived impact of training – In your opinion, how much does employee training impact job performance and retention?
 - [ ] Greatly increases both performance and retention

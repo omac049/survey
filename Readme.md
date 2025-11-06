@@ -104,7 +104,6 @@ _(e.g., healthcare, technology, manufacturing, retail, public sector, etc.)_
 ## Section 4 – Perception of Graduate vs. Undergraduate Online Programs
 
 ### Perception of online degrees – Please briefly explain your organization's overall view of online degrees compared to traditional degrees.
-_(Open text)_
 
 ---
 

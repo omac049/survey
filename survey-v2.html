@@ -1004,8 +1004,11 @@
                     <li>HR Director</li>
                     <li>Talent Acquisition Lead</li>
                     <li>Learning & Development (L&D)</li>
-                    <li>Other (please specify)</li>
+                    <li data-has-other="true">Other (please specify)</li>
                 </ul>
+                <div class="other-input-container" style="display: none; margin-top: 16px;">
+                    <input type="text" class="text-input other-specify" placeholder="Please specify your role...">
+                </div>
             </div>
 
             <div class="question">
@@ -1090,16 +1093,19 @@
             </div>
 
             <div class="question">
-                <h3>Influencers of perception – Which factors most influence your perception of online degrees? <span class="multi-select-note">Select all that apply</span></h3>
+                                <h3>Influencers of perception – Which factors most influence your perception of online degrees? <span class="multi-select-note">Select all that apply</span></h3>                                                          
                 <ul class="options multi-select">
                     <li>Accreditation of the program</li>
                     <li>Reputation of the institution</li>
                     <li>Rigor and curriculum design</li>
                     <li>Performance of past online‑degree hires</li>
                     <li>Soft skills and teamwork experience</li>
-                    <li>Personal bias/trust</li>
-                    <li>Other (please specify)</li>
+                    <li>Personal experience/trust</li>
+                    <li data-has-other="true">Other (please specify)</li>
                 </ul>
+                <div class="other-input-container" style="display: none; margin-top: 16px;">
+                    <input type="text" class="text-input other-specify" placeholder="Please specify other factors...">
+                </div>
             </div>
 
                     </div>
@@ -1208,7 +1214,7 @@
             </div>
 
             <div class="question">
-                <h3>Microcredential focus areas – Which skill areas would be most valuable for your workforce to pursue through online microcredentials? <span class="multi-select-note">Select all that apply</span></h3>
+                                <h3>Microcredential focus areas – Which skill areas would be most valuable for your workforce to pursue through online microcredentials? <span class="multi-select-note">Select all that apply</span></h3>                 
                 <ul class="options multi-select">
                     <li>Data analytics/AI</li>
                     <li>Cybersecurity</li>
@@ -1216,8 +1222,11 @@
                     <li>Project management</li>
                     <li>Healthcare administration</li>
                     <li>Business leadership</li>
-                    <li>Other (please specify)</li>
+                    <li data-has-other="true">Other (please specify)</li>
                 </ul>
+                <div class="other-input-container" style="display: none; margin-top: 16px;">
+                    <input type="text" class="text-input other-specify" placeholder="Please specify other skill areas...">
+                </div>
             </div>
 
             <div class="question">
@@ -1300,7 +1309,7 @@
             </div>
 
             <div class="question">
-                <h3>Key indicators for trust – What evidence would increase your confidence in hiring graduates from online programs? <span class="multi-select-note">Select all that apply</span></h3>
+                                <h3>Key indicators for trust – What evidence would increase your confidence in hiring graduates from online programs? <span class="multi-select-note">Select all that apply</span></h3>                                    
                 <ul class="options multi-select">
                     <li>Employer partnerships with universities</li>
                     <li>Accreditation transparency</li>
@@ -1308,8 +1317,11 @@
                     <li>Embedded practical training/internships</li>
                     <li>Professional certification alignment</li>
                     <li>Positive experience with online hires</li>
-                    <li>Other (please specify)</li>
+                    <li data-has-other="true">Other (please specify)</li>
                 </ul>
+                <div class="other-input-container" style="display: none; margin-top: 16px;">
+                    <input type="text" class="text-input other-specify" placeholder="Please specify other evidence...">
+                </div>
             </div>
 
             <div class="question">
@@ -1668,9 +1680,9 @@
             option.setAttribute('role', 'button');
             option.setAttribute('aria-pressed', 'false');
             
-            option.addEventListener('click', function() {
-                const isMultiSelect = this.parentElement.classList.contains('multi-select');
-                const isSelected = this.getAttribute('data-selected') === 'true';
+                        option.addEventListener('click', function() {
+                const isMultiSelect = this.parentElement.classList.contains('multi-select');                                                               
+                const isSelected = this.getAttribute('data-selected') === 'true';                                                                          
                 
                 if (isMultiSelect) {
                     // Multi-select: toggle this option
@@ -1683,12 +1695,35 @@
                     }
                 } else {
                     // Single-select: deselect all, select this one
-                    this.parentElement.querySelectorAll('li').forEach(li => {
+                    this.parentElement.querySelectorAll('li').forEach(li => {                                                                              
                         li.removeAttribute('data-selected');
                         li.setAttribute('aria-pressed', 'false');
                     });
                     this.setAttribute('data-selected', 'true');
                     this.setAttribute('aria-pressed', 'true');
+                }
+                
+                // Handle "Other" field visibility
+                const hasOther = this.getAttribute('data-has-other') === 'true';
+                const questionDiv = this.closest('.question');
+                const otherContainer = questionDiv.querySelector('.other-input-container');
+                
+                if (hasOther && otherContainer) {
+                    const nowSelected = this.getAttribute('data-selected') === 'true';
+                    if (nowSelected) {
+                        otherContainer.style.display = 'block';
+                        // Focus the input field for better UX
+                        setTimeout(() => {
+                            const input = otherContainer.querySelector('.other-specify');
+                            if (input) input.focus();
+                        }, 100);
+                    } else if (!isMultiSelect) {
+                        // For single-select, hide when deselected
+                        otherContainer.style.display = 'none';
+                    } else {
+                        // For multi-select, hide when toggled off
+                        otherContainer.style.display = 'none';
+                    }
                 }
             });
             

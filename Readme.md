@@ -83,7 +83,7 @@ _(e.g., healthcare, technology, manufacturing, retail, public sector, etc.)_
 - [ ] Rigor and curriculum design
 - [ ] Performance of past online‑degree hires
 - [ ] Soft skills and teamwork experience
-- [ ] Personal bias/trust
+- [ ] Personal experience/trust
 - [ ] Other (please specify)
 
 ---

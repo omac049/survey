@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Manager Survey – Online Learning vs. Traditional Education (2025) - v2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --accent-color: #f59e0b;
+            --accent-hover: #d97706;
+            --success-color: #10b981;
+            --text-dark: #111827;
+            --text-medium: #374151;
+            --text-light: #6b7280;
+            --background: #f8fafc;
+            --card-bg: #FFFFFF;
+            --border-color: #e5e7eb;
+            --highlight-bg: #dbeafe;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: linear-gradient(to bottom, #f8fafc 0%, #e0e7ff 100%);
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, #6366f1 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .intro-section {
+            background: var(--card-bg);
+            padding: 50px;
+            margin: -40px auto 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border-color);
+            position: relative;
+            max-width: 1000px;
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .intro-section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: none;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .intro-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+            border-radius: 2px;
+        }
+        
+        .key-stats {
+            background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 16px;
+            border: 2px solid #bfdbfe;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .key-stats > p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+        
+        .key-stats ul {
+            list-style: none;
+            padding-left: 0;
+            display: grid;
+            gap: 16px;
+        }
+        
+        .key-stats li {
+            padding: 16px 20px;
+            padding-left: 50px;
+            position: relative;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .key-stats li:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .key-stats li:before {
+            content: "📊";
+            position: absolute;
+            left: 16px;
+            font-size: 1.5rem;
+        }
+        
+        .key-stats strong {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.15em;
+        }
+        
+        .section {
+            background: var(--card-bg);
+            padding: 50px;
+            margin: 40px 0;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--border-color);
+            position: relative;
+            padding-left: 0;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .section h2::after {
+            content: '';
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(to right, var(--border-color), transparent);
+            margin-left: 16px;
+        }
+        
+        .question {
+            margin-bottom: 45px;
+            padding: 30px;
+            background: linear-gradient(to right, rgba(59, 130, 246, 0.02), transparent);
+            border-radius: 12px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .question:hover {
+            border-left-color: var(--secondary-color);
+            background: linear-gradient(to right, rgba(59, 130, 246, 0.04), transparent);
+        }
+        
+        .question:last-child {
+            border-bottom: none;
+        }
+        
+        .question h3 {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            line-height: 1.6;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .question h3 .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.2));
+            color: var(--secondary-color);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .question h3::before {
+            content: '▸';
+            color: var(--secondary-color);
+            font-size: 1rem;
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+        
+        .question-note {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            padding: 12px 16px;
+            background: rgba(107, 114, 128, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid var(--text-light);
+        }
+        
+        /* Text input styling */
+        .text-input, .text-area {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: white;
+            color: var(--text-dark);
+            resize: vertical;
+            min-height: 50px;
+        }
+        
+        .text-input:focus, .text-area:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            background: var(--highlight-bg);
+        }
+        
+        .text-area {
+            min-height: 120px;
+            line-height: 1.6;
+        }
+        
+        .input-label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .multi-select-note {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.15));
+            color: var(--secondary-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .options {
+            list-style: none;
+            padding-left: 0;
+            display: grid;
+            gap: 12px;
+        }
+        
+        .options li {
+            padding: 16px 24px 16px 60px;
+            margin: 0;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Radio button indicator */
+        .options li::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        /* Inner dot for selected state */
+        .options li::after {
+            content: '';
+            position: absolute;
+            left: 27px;
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .options li:hover {
+            border-color: var(--secondary-color);
+            background: var(--highlight-bg);
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .options li:hover::before {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .options li:active {
+            transform: translateX(4px) scale(0.98);
+        }
+        
+        /* Selected state */
+        .options li[data-selected="true"]::before {
+            border-color: var(--secondary-color);
+            background: white;
+        }
+        
+        .options li[data-selected="true"]::after {
+            transform: translateY(-50%) scale(1);
+        }
+        
+        /* Checkbox styling for multi-select questions */
+        .multi-select li::before {
+            border-radius: 6px;
+        }
+        
+        .multi-select li::after {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            left: 20px;
+            width: 22px;
+            height: 22px;
+            background: var(--secondary-color);
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 6px;
+            transform: translateY(-50%) scale(0);
+        }
+        
+        .multi-select li[data-selected="true"]::before {
+            border-color: var(--secondary-color);
+            background: var(--secondary-color);
+        }
+        
+        .multi-select li[data-selected="true"]::after {
+            transform: translateY(-50%) scale(1);
+        }
+        
+        .context-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #fbbf24;
+            padding: 24px;
+            margin: 24px 0;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .context-box::before {
+            content: '💡';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+        
+        .context-box strong {
+            color: var(--primary-dark);
+            font-size: 1.05rem;
+        }
+        
+        .context-box a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        
+        .context-box a:hover {
+            border-bottom-color: var(--primary-color);
+        }
+        
+        .rating-scale {
+            background: white;
+            padding: 0;
+            border-radius: 0;
+            margin: 20px 0 0 0;
+            border: none;
+        }
+        
+        .rating-scale ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 16px;
+        }
+        
+        .rating-scale-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(to right, rgba(59, 130, 246, 0.02), transparent);
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .rating-scale-item:hover {
+            border-color: var(--secondary-color);
+            background: linear-gradient(to right, rgba(59, 130, 246, 0.05), transparent);
+        }
+        
+        .rating-scale-label {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .rating-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .rating-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--border-color);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--text-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .rating-btn:hover {
+            border-color: var(--secondary-color);
+            background: var(--highlight-bg);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .rating-btn[data-selected="true"] {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .benchmarks-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 30px 0;
+            background: white;
+            box-shadow: var(--shadow-lg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        
+        .benchmarks-table thead {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+        
+        .benchmarks-table th {
+            padding: 20px 24px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.875rem;
+        }
+        
+        .benchmarks-table td {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-color);
+            line-height: 1.6;
+        }
+        
+        .benchmarks-table tbody tr {
+            transition: all 0.3s ease;
+        }
+        
+        .benchmarks-table tbody tr:hover {
+            background: var(--highlight-bg);
+            transform: scale(1.01);
+        }
+        
+        .benchmarks-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .benchmarks-table strong {
+            color: var(--primary-color);
+            font-size: 1.05rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .benchmarks-table td:first-child {
+            font-weight: 600;
+            background: linear-gradient(to right, rgba(59, 130, 246, 0.03), transparent);
+        }
+        
+        .benchmarks-table a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .benchmarks-table a:hover {
+            border-bottom-color: var(--secondary-color);
+            color: var(--primary-dark);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 60px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color), var(--accent-color));
+        }
+        
+        footer p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        footer p:first-child {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            margin: 40px 0;
+        }
+        
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            z-index: 9999;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+        
+        /* Progress Indicator */
+        .progress-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.5s ease 1s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .progress-indicator:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .progress-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: conic-gradient(var(--secondary-color) calc(var(--progress) * 1%), var(--border-color) calc(var(--progress) * 1%) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .progress-circle::before {
+            content: '';
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: white;
+        }
+        
+        .progress-percentage {
+            position: relative;
+            z-index: 1;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        /* Section Numbers */
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px;
+            height: 50px;
+            padding: 0 16px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-right: 0;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+            flex-shrink: 0;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .section, .intro-section {
+                box-shadow: none;
+                page-break-inside: avoid;
+                border: 1px solid #ddd;
+            }
+            
+            header {
+                background: var(--primary-color);
+                page-break-after: always;
+            }
+            
+            .options li:hover,
+            .question:hover {
+                transform: none;
+                background: inherit;
+            }
+            
+            footer {
+                page-break-before: always;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .container {
+                padding: 16px;
+            }
+            
+            .benchmarks-table {
+                font-size: 0.9rem;
+            }
+            
+            .benchmarks-table th,
+            .benchmarks-table td {
+                padding: 16px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .section, .intro-section {
+                padding: 30px 20px;
+                margin: 30px 0;
+                border-radius: 16px;
+            }
+            
+            .container {
+                padding: 12px;
+            }
+            
+            .section h2,
+            .intro-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .question {
+                padding: 20px;
+            }
+            
+            .question h3 {
+                font-size: 1.1rem;
+            }
+            
+            .key-stats li {
+                padding: 14px 16px;
+                padding-left: 45px;
+            }
+            
+            .benchmarks-table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .benchmarks-table th,
+            .benchmarks-table td {
+                padding: 12px;
+                font-size: 0.85rem;
+            }
+            
+            .options li:hover,
+            .rating-btn:hover {
+                transform: none;
+            }
+            
+            .rating-buttons {
+                gap: 6px;
+            }
+            
+            .rating-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 0.9rem;
+            }
+            
+            header {
+                padding: 60px 20px 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+            
+            .section, .intro-section {
+                padding: 24px 16px;
+            }
+            
+            .question h3::before {
+                display: none;
+            }
+            
+            .section-number {
+                min-width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            .rating-scale-item {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .rating-buttons {
+                justify-content: space-between;
+                width: 100%;
+            }
+            
+            .progress-indicator {
+                top: 10px;
+                right: 10px;
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+            
+            .progress-circle {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .progress-circle::before {
+                width: 22px;
+                height: 22px;
+            }
+            
+            .fab-container {
+                bottom: 80px;
+                right: 15px;
+            }
+            
+            .fab {
+                width: 48px;
+                height: 48px;
+                font-size: 1.3rem;
+            }
+            
+            .submit-section {
+                padding: 40px 24px;
+            }
+            
+            .submit-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .submit-btn {
+                padding: 14px 32px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Smooth transitions for all interactive elements */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Focus styles for accessibility */
+        .options li:focus,
+        .rating-btn:focus {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+        
+        .text-input:focus,
+        .text-area:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-circle" style="--progress: 0">
+            <span class="progress-percentage">0%</span>
+        </div>
+        <span>Progress</span>
+    </div>
+    
+    <!-- Scroll Progress Bar -->
+    <div class="progress-bar" style="width: 0%"></div>
+    
+    <!-- Floating Action Buttons -->
+    <div class="fab-container">
+        <button class="fab save" onclick="saveProgress()" title="Save Progress">
+            💾
+        </button>
+    </div>
+    
+    <header>
+        <div class="container">
+            <div class="badge">2025 Research Study - v2</div>
+            <h1>HR Manager Survey (v2)</h1>
+            <p class="subtitle">Online Learning vs. Traditional Education – 2025 Employer Study</p>
+        </div>
+    </header>
+
+    <div class="container">
+                <div class="intro-section">
+            <h2>Introduction</h2>
+            
+            <p>This survey is part of a 2025 research study exploring how employers perceive online education relative to traditional, in‑person programs.</p>  
+            
+            <p>We are interested in understanding your organization's perspectives and practices regarding candidates and employees with online degrees. Your honest feedback will help inform our understanding of current trends in the workplace.</p>
+            
+            <p><em>Your responses will remain confidential and will be aggregated for analysis. The survey should take approximately 10-15 minutes to complete.</em></p>                                                       
+        </div>
+
+        <div class="section">
+            <h2><span class="section-number">1</span> 👤 Respondent & Organization Profile</h2>
+            
+            <div class="question">
+                <h3>Your role – What is your position?</h3>
+                <ul class="options">
+                    <li>HR Manager</li>
+                    <li>HR Director</li>
+                    <li>Talent Acquisition Lead</li>
+                    <li>Learning & Development (L&D)</li>
+                    <li>Other (please specify)</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Primary industry – Which industry best describes your organization?</h3>
+                <p class="question-note">(e.g., healthcare, technology, manufacturing, retail, public sector, etc.)</p>
+                <input type="text" class="text-input" placeholder="Enter your industry...">
+            </div>
+
+            <div class="question">
+                <h3>Organization size – Number of employees:</h3>
+                <ul class="options">
+                    <li>Under 1,000 employees</li>
+                    <li>1,000-4,999 employees</li>
+                    <li>5,000+ employees</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Hiring frequency – How often does your organization recruit for positions that require a college degree?</h3>
+                <ul class="options">
+                    <li>Rarely</li>
+                    <li>Occasionally</li>
+                    <li>Frequently</li>
+                    <li>Always</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Percent of workforce with online degrees – Roughly what percentage of your current employees earned their highest degree online?</h3>
+                <ul class="options">
+                    <li>0–10%</li>
+                    <li>11–25%</li>
+                    <li>26–50%</li>
+                    <li>51%+</li>
+                    <li>Unsure</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Work arrangement – What is the predominant work arrangement in your organization?</h3>
+                <ul class="options">
+                    <li>On‑site</li>
+                    <li>Hybrid</li>
+                    <li>Fully remote</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Region – Where is your organization headquartered?</h3>
+                <ul class="options">
+                    <li>United States</li>
+                    <li>Canada</li>
+                    <li>Europe</li>
+                    <li>Latin America</li>
+                    <li>Asia‑Pacific</li>
+                    <li>Middle East/Africa</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="section-number">2</span> 🎓 Awareness & Credibility of Online Degrees</h2>
+            
+            <div class="question">
+                <h3>Degree modality awareness – Do you typically know whether a candidate's degree was earned online or on‑campus during the hiring process?</h3>
+                <ul class="options">
+                                        <li>Yes – we ask and record this information</li>
+                    <li>Sometimes – it occasionally comes up</li>
+                    <li>No – we don't track this</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Perceived credibility – How credible do you consider online degrees compared with traditional, in‑person degrees?</h3>
+                <ul class="options">
+                    <li>Much less credible</li>
+                    <li>Slightly less credible</li>
+                    <li>Equally credible</li>
+                    <li>Slightly more credible</li>
+                    <li>Much more credible</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Influencers of perception – Which factors most influence your perception of online degrees? <span class="multi-select-note">Select all that apply</span></h3>
+                <ul class="options multi-select">
+                    <li>Accreditation of the program</li>
+                    <li>Reputation of the institution</li>
+                    <li>Rigor and curriculum design</li>
+                    <li>Performance of past online‑degree hires</li>
+                    <li>Soft skills and teamwork experience</li>
+                    <li>Personal bias/trust</li>
+                    <li>Other (please specify)</li>
+                </ul>
+            </div>
+
+                    </div>
+
+        <div class="section">
+                        <h2><span class="section-number">3</span> 💼 Hiring & Compensation Practices</h2>                                                                   
+            
+            <div class="question">
+                <h3>Functional openness – Please rate your openness to hiring candidates with online degrees in the following functional areas</h3>
+                <p class="question-note">Scale: 1 = Not open | 5 = Very open</p>
+                <div class="rating-scale">
+                    <div class="rating-scale-item">
+                        <div class="rating-scale-label">Information Technology (IT)</div>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="1">1</button>
+                            <button class="rating-btn" data-value="2">2</button>
+                            <button class="rating-btn" data-value="3">3</button>
+                            <button class="rating-btn" data-value="4">4</button>
+                            <button class="rating-btn" data-value="5">5</button>
+                        </div>
+                    </div>
+                    <div class="rating-scale-item">
+                        <div class="rating-scale-label">Human Resources (HR)</div>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="1">1</button>
+                            <button class="rating-btn" data-value="2">2</button>
+                            <button class="rating-btn" data-value="3">3</button>
+                            <button class="rating-btn" data-value="4">4</button>
+                            <button class="rating-btn" data-value="5">5</button>
+                        </div>
+                    </div>
+                    <div class="rating-scale-item">
+                        <div class="rating-scale-label">Finance & Accounting</div>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="1">1</button>
+                            <button class="rating-btn" data-value="2">2</button>
+                            <button class="rating-btn" data-value="3">3</button>
+                            <button class="rating-btn" data-value="4">4</button>
+                            <button class="rating-btn" data-value="5">5</button>
+                        </div>
+                    </div>
+                    <div class="rating-scale-item">
+                        <div class="rating-scale-label">Operations/Supply Chain</div>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="1">1</button>
+                            <button class="rating-btn" data-value="2">2</button>
+                            <button class="rating-btn" data-value="3">3</button>
+                            <button class="rating-btn" data-value="4">4</button>
+                            <button class="rating-btn" data-value="5">5</button>
+                        </div>
+                    </div>
+                    <div class="rating-scale-item">
+                        <div class="rating-scale-label">Marketing & Sales</div>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="1">1</button>
+                            <button class="rating-btn" data-value="2">2</button>
+                            <button class="rating-btn" data-value="3">3</button>
+                            <button class="rating-btn" data-value="4">4</button>
+                            <button class="rating-btn" data-value="5">5</button>
+                        </div>
+                    </div>
+                    <div class="rating-scale-item">
+                        <div class="rating-scale-label">Data Analytics/Artificial Intelligence</div>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="1">1</button>
+                            <button class="rating-btn" data-value="2">2</button>
+                            <button class="rating-btn" data-value="3">3</button>
+                            <button class="rating-btn" data-value="4">4</button>
+                            <button class="rating-btn" data-value="5">5</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+                        <h2><span class="section-number">4</span> 📊 Perception of Graduate vs. Undergraduate Online Programs</h2>                                          
+            
+            <div class="question">
+                <h3>Perception of online degrees – Please briefly explain your organization's overall view of online degrees compared to traditional degrees.</h3>
+                <p class="question-note">(Open text)</p>
+                <textarea class="text-area" placeholder="Share your thoughts here..." rows="4"></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="section-number">5</span> 🎖️ Microcredentials & Upskilling</h2>
+            
+            <div class="question">
+                <h3>Value of microcredentials – Are you more likely to hire a candidate with a short microcredential (e.g., graduate certificate or digital badge) compared with someone with a full degree?</h3>
+                <ul class="options">
+                    <li>Yes – microcredentials are sufficient</li>
+                    <li>No – prefer full degrees</li>
+                    <li>Depends on the role</li>
+                    <li>Unsure</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Upskilling partnerships – Would your organization partner with an online university to upskill or reskill employees?</h3>
+                <ul class="options">
+                    <li>Yes</li>
+                    <li>Maybe/depends on offering</li>
+                    <li>No</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Microcredential focus areas – Which skill areas would be most valuable for your workforce to pursue through online microcredentials? <span class="multi-select-note">Select all that apply</span></h3>
+                <ul class="options multi-select">
+                    <li>Data analytics/AI</li>
+                    <li>Cybersecurity</li>
+                    <li>Human resources management</li>
+                    <li>Project management</li>
+                    <li>Healthcare administration</li>
+                    <li>Business leadership</li>
+                    <li>Other (please specify)</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Employees' ongoing education – Are you aware of employees in your organization who have completed an online degree or microcredential while working for you?</h3>
+                <ul class="options">
+                    <li>Yes – multiple employees</li>
+                    <li>Yes – a few employees</li>
+                    <li>No</li>
+                    <li>Unsure</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Support for employee education – Does your organization offer tuition assistance or reimbursement for employees pursuing online degrees or microcredentials?</h3>
+                <ul class="options">
+                    <li>Yes – for both degrees and microcredentials</li>
+                    <li>Yes – for degrees only</li>
+                    <li>Yes – for microcredentials only</li>
+                    <li>No</li>
+                    <li>Unsure</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="section-number">6</span> 📚 Learning & Development Investment</h2>
+            
+            <div class="question">
+                <h3>Formal training programs – Does your organization have a formal employee training program?</h3>
+                                <ul class="options">
+                    <li>Yes – comprehensive training program</li>
+                    <li>Somewhat – occasional or ad‑hoc training</li>
+                    <li>No formal program</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Employee training preference – How do your employees typically prefer to learn?</h3>
+                                <ul class="options">
+                    <li>On‑the‑job training (hands‑on)</li>
+                    <li>Formal training sessions (online or in person)</li>
+                    <li>Hybrid mix of on‑the‑job and formal sessions</li>
+                    <li>Unsure</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Perceived impact of training – In your opinion, how much does employee training impact job performance and retention?</h3>
+                                <ul class="options">
+                    <li>Greatly increases both performance and retention</li>
+                    <li>Increases performance but not retention</li>
+                    <li>Little or no impact</li>
+                    <li>Unsure</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Future investment – Over the next two years, do you plan to increase, maintain, or decrease your organization's investment in employee training and development?</h3>
+                <ul class="options">
+                    <li>Increase</li>
+                    <li>Maintain</li>
+                    <li>Decrease</li>
+                    <li>Unsure</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="section-number">7</span> 🔮 Future Outlook & Employer Expectations</h2>
+            
+            <div class="question">
+                <h3>Future importance of online education – How important do you think online education will be for workforce development in the next five years?</h3>
+                <ul class="options">
+                    <li>Not at all important</li>
+                    <li>Slightly important</li>
+                    <li>Moderately important</li>
+                    <li>Very important</li>
+                    <li>Extremely important</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Key indicators for trust – What evidence would increase your confidence in hiring graduates from online programs? <span class="multi-select-note">Select all that apply</span></h3>
+                <ul class="options multi-select">
+                    <li>Employer partnerships with universities</li>
+                    <li>Accreditation transparency</li>
+                    <li>Alumni career outcomes data</li>
+                    <li>Embedded practical training/internships</li>
+                    <li>Professional certification alignment</li>
+                    <li>Positive experience with online hires</li>
+                    <li>Other (please specify)</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Outlook on microcredentials vs. degrees – Do you believe microcredentials will replace some degree requirements in your industry?</h3>
+                <ul class="options">
+                    <li>Yes – microcredentials will largely replace degrees</li>
+                    <li>No – degrees will remain the standard</li>
+                    <li>They will coexist with overlapping requirements</li>
+                    <li>Unsure</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>Open comments – Please share any additional thoughts on the role of online education, microcredentials, or training in shaping your workforce.</h3>
+                <p class="question-note">(Open text)</p>
+                <textarea class="text-area" placeholder="Share your thoughts here..." rows="5"></textarea>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="section-number">8</span> 💬 Featured Quote Opportunity</h2>
+            
+            <div class="context-box" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-color: #3b82f6;">
+                <p><strong>📣 Share Your Voice:</strong> We're looking to feature insights from HR leaders and hiring managers in our research publication. Your perspective would add valuable real-world context to our study.</p>
+            </div>
+
+            <div class="question">
+                <h3>Would you be willing to share a brief quote about your organization's perspective on hiring online degree graduates for potential feature in our research study?</h3>
+                <ul class="options">
+                    <li>Yes, I'm interested in being featured</li>
+                    <li>Maybe, I'd like more information first</li>
+                    <li>No, thank you</li>
+                </ul>
+            </div>
+
+            <div class="question">
+                <h3>If interested, please provide your quote below:</h3>
+                <p class="question-note">
+                    <strong>Example topics:</strong><br>
+                    • Your experience hiring online degree graduates<br>
+                    • How your organization values online vs. traditional degrees<br>
+                    • The future of online education in your industry<br>
+                    • Success stories of online degree holders at your company
+                </p>
+                <p class="question-note">(Open text - please keep to 2-3 sentences)</p>
+                <textarea class="text-area" placeholder="Your quote here (2-3 sentences)..." rows="4"></textarea>
+            </div>
+
+            <div class="question">
+                <h3>Contact Information (Optional - only if you'd like to be featured):</h3>
+                <div style="display: grid; gap: 16px; margin-top: 20px;">
+                    <div>
+                        <label class="input-label">Name:</label>
+                        <input type="text" class="text-input" placeholder="Your full name">
+                    </div>
+                    <div>
+                        <label class="input-label">Title:</label>
+                        <input type="text" class="text-input" placeholder="Your job title">
+                    </div>
+                    <div>
+                        <label class="input-label">Company:</label>
+                        <input type="text" class="text-input" placeholder="Company name">
+                    </div>
+                    <div>
+                        <label class="input-label">Email:</label>
+                        <input type="email" class="text-input" placeholder="your.email@company.com">
+                    </div>
+                    <div>
+                        <label class="input-label">LinkedIn Profile:</label>
+                        <input type="url" class="text-input" placeholder="https://linkedin.com/in/yourprofile">
+                    </div>
+                </div>
+            </div>
+
+            <div class="context-box" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+                <p><strong>Note:</strong> All quotes are subject to review and approval before publication. We'll contact you for confirmation before featuring your quote in any published materials.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="section-number">📈</span>Data Benchmarks Used in This Survey</h2>
+            
+            <table class="benchmarks-table">
+                <thead>
+                    <tr>
+                        <th>Benchmark</th>
+                        <th>Statistic</th>
+                        <th>Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Hiring and pay parity</strong></td>
+                        <td>87.4% of employers that capture degree modality have hired new online‑degree graduates; 100% pay online‑degree hires the same starting salary as in‑person degree holders.</td>
+                        <td>National Association of Colleges and Employers (NACE). (2024). <em>Job Outlook 2024</em>. <a href="https://www.naceweb.org/docs/default-source/default-document-library/2023/publication/research-report/2024-nace-job-outlook.pdf" target="_blank">View report</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Global value parity</strong></td>
+                        <td>55% of employers worldwide (and 58% in Western Europe) value graduates of online or predominantly online programs equally.</td>
+                        <td>Graduate Management Admission Council (GMAC). (2025). <em>Corporate Recruiters Survey Report</em>. <a href="https://www.gmac.com/market-intelligence-and-research/research-library/employment-outlook/2025-corporate-recruiters-survey-report" target="_blank">View report</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>US perception gap</strong></td>
+                        <td>Only 5% of U.S. employers strongly agree and 23% agree that their company values graduates of online and in‑person programs equally.</td>
+                        <td>GMAC (2025). <em>Corporate Recruiters Survey</em>. Analysis reported in <em>BestColleges</em>. <a href="https://www.bestcolleges.com/news/employers-embrace-online-degrees-gmac-corporate-recruiters/" target="_blank">Read article</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Employer awareness</strong></td>
+                        <td>Roughly 90% of employers know whether a degree was delivered online before an employee starts.</td>
+                        <td>Graduate Management Admission Council (GMAC). (2025). <em>Corporate Recruiters Survey Report</em>. <a href="https://www.gmac.com/market-intelligence-and-research/market-research/corporate-recruiters-survey" target="_blank">View report</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tech sector openness</strong></td>
+                        <td>57% of technology employers are likely to value graduates of online or hybrid programs equally.</td>
+                        <td>Graduate Management Admission Council (GMAC). (2025). <em>Corporate Recruiters Survey Report</em>. <a href="https://www.gmac.com/why-gmac/gmac-news/gmac-press-releases/survey-projects-demand-for-business-school-graduates-to-rebound-in-post-pandemic-era" target="_blank">View report</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Training & L&D ROI</strong></td>
+                        <td>Companies with comprehensive training programs have 218% higher income per employee. 68% of employees prefer to train at work, and 59% say training improves performance.</td>
+                        <td>Peck, D. (2025). "Employee training and development statistics." <em>Devlin Peck</em>. <a href="https://www.devlinpeck.com/content/employee-training-statistics" target="_blank">Read guide</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Global confidence in business education</strong></td>
+                        <td>99% of employers say business schools prepare graduates for success, and 90% plan to hire MBA talent in 2025.</td>
+                        <td>Graduate Management Admission Council (GMAC). (2025). <em>Corporate Recruiters Survey Report</em>. <a href="https://www.gmac.com/why-gmac/gmac-news/gmac-press-releases/ai-integration-accelerates" target="_blank">View report</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="citations-section" style="margin-top: 50px; padding-top: 40px; border-top: 2px solid var(--border-color);">
+                <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 20px;">Citations & Data Sources</h3>
+                <p style="margin-bottom: 20px; color: var(--text-medium);">All statistics in this survey are sourced from verified, authoritative research organizations. Citations follow academic standards with complete source attribution.</p>
+                
+                <h4 style="color: var(--text-dark); font-size: 1.2rem; margin-bottom: 15px; margin-top: 25px;">Primary Sources:</h4>
+                <ul style="list-style-type: none; padding-left: 0; margin-bottom: 20px;">
+                    <li style="margin-bottom: 12px; color: var(--text-medium);">
+                        <strong style="color: var(--primary-color);">NACE (National Association of Colleges and Employers)</strong> - <a href="https://www.naceweb.org" target="_blank" style="color: var(--secondary-color); text-decoration: none;">www.naceweb.org</a> - Authoritative source for employer hiring trends and salary data
+                    </li>
+                    <li style="margin-bottom: 12px; color: var(--text-medium);">
+                        <strong style="color: var(--primary-color);">GMAC (Graduate Management Admission Council)</strong> - <a href="https://www.gmac.com" target="_blank" style="color: var(--secondary-color); text-decoration: none;">www.gmac.com</a> - Global authority on graduate business education and employer recruiting
+                    </li>
+                    <li style="margin-bottom: 12px; color: var(--text-medium);">
+                        <strong style="color: var(--primary-color);">BestColleges</strong> - <a href="https://www.bestcolleges.com" target="_blank" style="color: var(--secondary-color); text-decoration: none;">www.bestcolleges.com</a> - Higher education research and analysis platform
+                    </li>
+                    <li style="margin-bottom: 12px; color: var(--text-medium);">
+                        <strong style="color: var(--primary-color);">Devlin Peck</strong> - <a href="https://www.devlinpeck.com" target="_blank" style="color: var(--secondary-color); text-decoration: none;">www.devlinpeck.com</a> - Learning and development research organization
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Section -->
+    <div class="container">
+        <div class="submit-section">
+            <div class="content">
+                <h2>🎯 Ready to Submit?</h2>
+                <p>Thank you for taking the time to complete this comprehensive survey. Your insights are invaluable in understanding the evolving landscape of online education in the workplace.</p>
+                <button class="submit-btn" onclick="submitSurvey()">
+                    Submit Survey
+                </button>
+                <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
+                    📧 Results will be sent to your email | ⏱️ Average completion time: 12-15 minutes
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p><strong>Thank you for your participation.</strong></p>
+            <p>Your responses will help us understand evolving perceptions of online learning and inform future partnerships between employers and educational institutions.</p>
+            <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-light);">
+                © 2025 UAGC Research Study | <a href="#" style="color: var(--secondary-color); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--secondary-color); text-decoration: none;">Contact Us</a>
+            </p>
+        </div>
+    </footer>
+
+    <style>
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .back-to-top:active {
+            transform: translateY(-3px);
+        }
+        
+        /* Submit Section */
+        .submit-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 40px;
+            margin: 60px 0 40px 0;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .submit-section .content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .submit-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .submit-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .submit-btn {
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 18px 48px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .submit-btn::after {
+            content: '→';
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .submit-btn:hover::after {
+            transform: translateX(5px);
+        }
+        
+        /* Floating Action Buttons */
+        .fab-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .fab {
+            width: 56px;
+            height: 56px;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            font-size: 1.5rem;
+        }
+        
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--secondary-color);
+        }
+        
+        .fab.save {
+            background: linear-gradient(135deg, var(--success-color), #059669);
+            color: white;
+            border: none;
+        }
+        
+        .fab.help {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+        }
+    </style>
+
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">
+        ↑
+    </button>
+
+    <script>
+        // Back to top button visibility
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        // Add click handlers to make options selectable (visual feedback)
+        document.querySelectorAll('.options li, .rating-scale li').forEach(option => {
+            option.setAttribute('tabindex', '0');
+            option.setAttribute('role', 'button');
+            option.setAttribute('aria-pressed', 'false');
+            
+            option.addEventListener('click', function() {
+                const isMultiSelect = this.parentElement.classList.contains('multi-select');
+                const isSelected = this.getAttribute('data-selected') === 'true';
+                
+                if (isMultiSelect) {
+                    // Multi-select: toggle this option
+                    if (isSelected) {
+                        this.removeAttribute('data-selected');
+                        this.setAttribute('aria-pressed', 'false');
+                    } else {
+                        this.setAttribute('data-selected', 'true');
+                        this.setAttribute('aria-pressed', 'true');
+                    }
+                } else {
+                    // Single-select: deselect all, select this one
+                    this.parentElement.querySelectorAll('li').forEach(li => {
+                        li.removeAttribute('data-selected');
+                        li.setAttribute('aria-pressed', 'false');
+                    });
+                    this.setAttribute('data-selected', 'true');
+                    this.setAttribute('aria-pressed', 'true');
+                }
+            });
+            
+            // Keyboard accessibility
+            option.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // Add smooth reveal animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for animation
+        document.querySelectorAll('.section, .question').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Add print button functionality
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                window.print();
+            }
+        });
+
+        // Handle rating button clicks
+        document.querySelectorAll('.rating-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove selection from all buttons in this rating group
+                const ratingButtons = this.closest('.rating-buttons');
+                ratingButtons.querySelectorAll('.rating-btn').forEach(b => {
+                    b.removeAttribute('data-selected');
+                });
+                
+                // Mark this button as selected
+                this.setAttribute('data-selected', 'true');
+                updateProgress();
+            });
+        });
+
+        // Progress Tracking
+        function updateProgress() {
+            const totalQuestions = document.querySelectorAll('.question').length;
+            let answeredQuestions = 0;
+            
+            // Count answered questions
+            document.querySelectorAll('.question').forEach(question => {
+                const hasSelection = question.querySelector('[data-selected="true"]');
+                const hasInput = question.querySelector('.text-input, .text-area');
+                
+                if (hasSelection || (hasInput && hasInput.value.trim() !== '')) {
+                    answeredQuestions++;
+                }
+            });
+            
+            const progress = Math.round((answeredQuestions / totalQuestions) * 100);
+            
+            // Update progress indicator
+            const progressCircle = document.querySelector('.progress-circle');
+            const progressPercentage = document.querySelector('.progress-percentage');
+            if (progressCircle && progressPercentage) {
+                progressCircle.style.setProperty('--progress', progress);
+                progressPercentage.textContent = progress + '%';
+            }
+        }
+
+        // Update progress when inputs change
+        document.querySelectorAll('.text-input, .text-area').forEach(input => {
+            input.addEventListener('input', updateProgress);
+        });
+
+        // Save Progress
+        function saveProgress() {
+            const responses = {};
+            let questionIndex = 0;
+            
+            document.querySelectorAll('.question').forEach(question => {
+                const questionText = question.querySelector('h3').textContent;
+                const selectedOption = question.querySelector('[data-selected="true"]');
+                const textInput = question.querySelector('.text-input, .text-area');
+                
+                if (selectedOption) {
+                    responses[questionIndex] = {
+                        question: questionText,
+                        answer: selectedOption.textContent
+                    };
+                } else if (textInput && textInput.value.trim() !== '') {
+                    responses[questionIndex] = {
+                        question: questionText,
+                        answer: textInput.value
+                    };
+                }
+                questionIndex++;
+            });
+            
+            localStorage.setItem('surveyProgress', JSON.stringify(responses));
+            
+            // Show confirmation
+            const saveBtn = document.querySelector('.fab.save');
+            const originalContent = saveBtn.innerHTML;
+            saveBtn.innerHTML = '✓';
+            saveBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            
+            setTimeout(() => {
+                saveBtn.innerHTML = originalContent;
+            }, 2000);
+        }
+
+        // Submit Survey
+        function submitSurvey() {
+            const totalQuestions = document.querySelectorAll('.question').length;
+            let answeredQuestions = 0;
+            
+            document.querySelectorAll('.question').forEach(question => {
+                const hasSelection = question.querySelector('[data-selected="true"]');
+                const hasInput = question.querySelector('.text-input, .text-area');
+                
+                if (hasSelection || (hasInput && hasInput.value.trim() !== '')) {
+                    answeredQuestions++;
+                }
+            });
+            
+            const completionPercentage = Math.round((answeredQuestions / totalQuestions) * 100);
+            
+            if (completionPercentage < 80) {
+                alert(`Survey is ${completionPercentage}% complete. Please answer at least 80% of questions before submitting.\n\nYou've answered ${answeredQuestions} out of ${totalQuestions} questions.`);
+                return;
+            }
+            
+            // Simulate submission
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            setTimeout(() => {
+                alert('✅ Survey submitted successfully!\n\nThank you for your participation. Your responses have been recorded and will help us understand the evolving landscape of online education.');
+                submitBtn.textContent = 'Submitted ✓';
+                submitBtn.style.background = 'var(--success-color)';
+                submitBtn.style.color = 'white';
+                
+                // Clear saved progress
+                localStorage.removeItem('surveyProgress');
+            }, 1500);
+        }
+
+
+
+        // Load saved progress on page load
+        window.addEventListener('load', () => {
+            const saved = localStorage.getItem('surveyProgress');
+            if (saved) {
+                const shouldRestore = confirm('Would you like to restore your previous progress?');
+                if (shouldRestore) {
+                    // Restore logic could be implemented here
+                    alert('Progress restoration feature - coming soon!');
+                }
+            }
+            updateProgress();
+        });
+    </script>
+</body>
+</html>

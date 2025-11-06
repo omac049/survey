@@ -90,7 +90,7 @@ _(e.g., healthcare, technology, manufacturing, retail, public sector, etc.)_
 
 ## Section 3 – Hiring & Compensation Practices
 
-### Functional openness – Please rate your openness to hiring candidates with online degrees in the following functional areas (1 = Not open, 5 = Very open):
+### Hiring interest – Please rate your interest in hiring candidates with online degrees in the following functional areas (1 = Not interested, 5 = Very interested):
 - Information Technology (IT)
 - Human Resources (HR)
 - Finance & Accounting

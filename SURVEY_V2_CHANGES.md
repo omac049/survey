@@ -47,8 +47,10 @@ This document summarizes the changes made to create v2 of the HR Manager Survey 
 - **Removed:** "Compensation parity" question + context box (100% NACE stat)
 - **Removed:** "Hiring history" question + context box (87.4% NACE stat)
 - **Removed:** "Leadership roles" question
-- **Kept:** Only "Functional openness" question (6-area rating scale)
-- **Rationale:** Pare back section significantly to reduce survey length and redundancy
+- **Kept:** Only "Hiring interest" question (6-area rating scale)
+- **Improved:** Changed "Functional openness" → "Hiring interest" for clarity
+- **Improved:** Changed scale from "Not open/Very open" → "Not interested/Very interested"
+- **Rationale:** Pare back section significantly to reduce survey length and redundancy; clearer wording
 
 ### **Section 4: Perception of Graduate vs. Undergraduate Online Programs**
 - **Removed:** "Undergraduate vs. graduate credibility" question
@@ -101,6 +103,36 @@ This document summarizes the changes made to create v2 of the HR Manager Survey 
 - ~32 questions (20% reduction)
 - Only 2 informational context boxes remain (in Section 8, procedural only)
 - Significantly shorter and less leading
+
+---
+
+## Functional Enhancements
+
+### **Interactive Features Added**
+- **Progress Tracking:** Real-time progress bar showing completion percentage
+- **Auto-Save:** Responses automatically saved to browser localStorage every second
+- **Submit Functionality:** Complete survey submission with validation
+- **Download Responses:** Export all responses as JSON file for records
+- **Clear & Restart:** Option to clear all responses and start over
+- **"Other" Field Support:** Dynamic text fields appear when "Other (please specify)" is selected
+- **Back to Top Button:** Quick navigation to top of survey
+- **Progress Indicator:** Fixed header showing percentage complete
+- **Visual Feedback:** Auto-save indicator confirms data is saved
+
+### **Data Collection Features**
+- Collects all question types: single-select, multi-select, ratings, text inputs
+- Timestamps all responses
+- Organizes data by section and question
+- JSON format for easy analysis
+- Browser-based storage (no server required for testing)
+
+### **User Experience Improvements**
+- Clearer question wording ("Hiring interest" vs "Functional openness")
+- More natural scale labels ("Not interested/Very interested")
+- Better labeling ("Personal experience/trust" vs "Personal bias/trust")
+- Auto-focus on "Other" text fields
+- Smooth animations and transitions
+- Responsive design for all devices
 
 ---
 

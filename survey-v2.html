@@ -1809,21 +1809,7 @@
         </div>
     </div>
 
-    <!-- Submit Section -->
-    <div class="container">
-        <div class="submit-section">
-            <div class="content">
-                <h2>🎯 Ready to Submit?</h2>
-                <p>Thank you for taking the time to complete this comprehensive survey. Your insights are invaluable in understanding the evolving landscape of online education in the workplace.</p>
-                <button class="submit-btn" onclick="submitSurvey()">
-                    Submit Survey
-                </button>
-                <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
-                    📧 Results will be sent to your email | ⏱️ Average completion time: 12-15 minutes
-                </p>
-            </div>
-        </div>
-    </div>
+    
 
     <footer>
         <div class="container">
@@ -2185,42 +2171,7 @@
             }, 2000);
         }
 
-        // Submit Survey
-        function submitSurvey() {
-            const totalQuestions = document.querySelectorAll('.question').length;
-            let answeredQuestions = 0;
-            
-            document.querySelectorAll('.question').forEach(question => {
-                const hasSelection = question.querySelector('[data-selected="true"]');
-                const hasInput = question.querySelector('.text-input, .text-area');
-                
-                if (hasSelection || (hasInput && hasInput.value.trim() !== '')) {
-                    answeredQuestions++;
-                }
-            });
-            
-            const completionPercentage = Math.round((answeredQuestions / totalQuestions) * 100);
-            
-            if (completionPercentage < 80) {
-                alert(`Survey is ${completionPercentage}% complete. Please answer at least 80% of questions before submitting.\n\nYou've answered ${answeredQuestions} out of ${totalQuestions} questions.`);
-                return;
-            }
-            
-            // Simulate submission
-            const submitBtn = document.querySelector('.submit-btn');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
-            
-            setTimeout(() => {
-                alert('✅ Survey submitted successfully!\n\nThank you for your participation. Your responses have been recorded and will help us understand the evolving landscape of online education.');
-                submitBtn.textContent = 'Submitted ✓';
-                submitBtn.style.background = 'var(--success-color)';
-                submitBtn.style.color = 'white';
-                
-                // Clear saved progress
-                localStorage.removeItem('surveyProgress');
-            }, 1500);
-        }
+        
 
 
 

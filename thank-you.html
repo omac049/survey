@@ -56,6 +56,14 @@
             flex-direction: column;
         }
         
+        /* Utility bar for logo */
+        .utility-bar {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
         header {
             background: var(--arizona-blue);
             color: white;
@@ -71,7 +79,7 @@
         }
         
         .logo-container {
-            margin-bottom: 20px;
+            margin-bottom: 0;
         }
         
         main {
@@ -331,7 +339,8 @@
     </style>
 </head>
 <body>
-    <header>
+    <!-- Utility Bar with Logo -->
+    <div class="utility-bar">
         <div class="container">
             <div class="logo-container">
                 <svg width="180" height="32" viewBox="0 0 181 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));">
@@ -354,6 +363,13 @@
                 </svg>
             </div>
         </div>
+    </div>
+    
+        <header>
+        <div class="container">
+            <h1>Thank You! 🎉</h1>
+            <p class="subtitle">Your Response Has Been Successfully Submitted</p>
+        </div>
     </header>
 
     <main>
@@ -365,14 +381,22 @@
                     </svg>
                 </div>
                 
-                <h1>Thank You! 🎉</h1>
-                <p class="subtitle">Your Response Has Been Successfully Submitted</p>
+                            <h1>Thank You<span id="userName"></span>! 🎉</h1>
+            <p class="subtitle">Your Response Has Been Successfully Submitted</p>
+            
+            <!-- Personalized Information -->
+            <div id="personalInfo" class="message" style="background: linear-gradient(135deg, rgba(0, 125, 138, 0.1), rgba(129, 211, 235, 0.1)); padding: 20px; border-radius: 12px; border-left: 4px solid var(--teal); margin-bottom: 30px;">
+                <p style="font-size: 1.1rem; margin-bottom: 8px;"><strong>📋 Survey Details:</strong></p>
+                <p id="userRole" style="margin: 8px 0;"></p>
+                <p id="userIndustry" style="margin: 8px 0;"></p>
+                <p id="userOrgSize" style="margin: 8px 0;"></p>
+            </div>
+            
+            <div class="message">
+                <p>We sincerely appreciate you taking the time to share your valuable insights and perspectives on online learning and traditional education in the hiring landscape.</p>                                                   
                 
-                <div class="message">
-                    <p>We sincerely appreciate you taking the time to share your valuable insights and perspectives on online learning and traditional education in the hiring landscape.</p>
-                    
-                    <p>Your feedback is instrumental in helping us understand employer attitudes and will contribute to research that shapes the future of higher education and workforce development.</p>
-                </div>
+                <p>Your feedback is instrumental in helping us understand employer attitudes and will contribute to research that shapes the future of higher education and workforce development.</p>                                      
+            </div>
                 
                 <div class="highlight-box">
                     <p>💡 Your responses will be analyzed alongside other HR leaders' insights to provide meaningful data that benefits both employers and educational institutions.</p>
@@ -415,14 +439,72 @@
 
     <script>
         // Create confetti animation on page load
-        window.addEventListener('load', function() {
-            const colors = ['#EF9600', '#007D8A', '#0C234B', '#81D3EB', '#AB0520'];
+                window.addEventListener('load', function() {
+            // Confetti animation
+            const colors = ['#EF9600', '#007D8A', '#0C234B', '#81D3EB', '#AB0520'];                                                                             
             const confettiCount = 50;
             
             for (let i = 0; i < confettiCount; i++) {
                 setTimeout(() => {
-                    createConfetti(colors[Math.floor(Math.random() * colors.length)]);
+                    createConfetti(colors[Math.floor(Math.random() * colors.length)]);                                                                          
                 }, i * 30);
+            }
+            
+            // Personalize thank you page with survey data
+            try {
+                const surveyData = JSON.parse(localStorage.getItem('surveySubmitted'));
+                
+                if (surveyData && surveyData.responses) {
+                    const sections = surveyData.responses.sections;
+                    
+                    // Get respondent profile data from Section 1
+                    if (sections && sections['1']) {
+                        const section1 = sections['1'];
+                        
+                        // Get role
+                        const roleQuestion = section1.find(q => q.question.includes('Your role'));
+                        if (roleQuestion && roleQuestion.answer) {
+                            const role = Array.isArray(roleQuestion.answer) ? roleQuestion.answer[0] : roleQuestion.answer;
+                            document.getElementById('userRole').innerHTML = `<strong>Role:</strong> ${role}`;
+                            
+                            // Add role to header greeting
+                            const userName = document.getElementById('userName');
+                            if (role && role !== 'Other (please specify)') {
+                                userName.textContent = ', ' + role.replace('HR ', '').replace('Lead', 'Lead');
+                            }
+                        }
+                        
+                        // Get industry
+                        const industryQuestion = section1.find(q => q.question.includes('Primary industry'));
+                        if (industryQuestion && industryQuestion.answer) {
+                            const industry = Array.isArray(industryQuestion.answer) ? industryQuestion.answer[0] : industryQuestion.answer;
+                            if (industry && industry.trim()) {
+                                document.getElementById('userIndustry').innerHTML = `<strong>Industry:</strong> ${industry}`;
+                            }
+                        }
+                        
+                        // Get organization size
+                        const orgSizeQuestion = section1.find(q => q.question.includes('Organization size'));
+                        if (orgSizeQuestion && orgSizeQuestion.answer) {
+                            const orgSize = Array.isArray(orgSizeQuestion.answer) ? orgSizeQuestion.answer[0] : orgSizeQuestion.answer;
+                            document.getElementById('userOrgSize').innerHTML = `<strong>Organization Size:</strong> ${orgSize}`;
+                        }
+                    }
+                    
+                    // If no data was populated, hide the personal info section
+                    const personalInfo = document.getElementById('personalInfo');
+                    const hasContent = document.getElementById('userRole').textContent || 
+                                      document.getElementById('userIndustry').textContent || 
+                                      document.getElementById('userOrgSize').textContent;
+                    
+                    if (!hasContent) {
+                        personalInfo.style.display = 'none';
+                    }
+                }
+            } catch (error) {
+                console.log('Could not load personalized data:', error);
+                // Hide personal info section if there's an error
+                document.getElementById('personalInfo').style.display = 'none';
             }
         });
         

@@ -2392,6 +2392,99 @@
             }
         }
         
+        // Restore saved responses to the UI
+        function restoreSavedResponses(savedData) {
+            if (!savedData || !savedData.sections) return;
+            
+            let restoredCount = 0;
+            
+            // Iterate through saved sections
+            Object.keys(savedData.sections).forEach(sectionTitle => {
+                const sectionData = savedData.sections[sectionTitle];
+                
+                Object.keys(sectionData).forEach(questionTitle => {
+                    const questionData = sectionData[questionTitle];
+                    
+                    // Find the question in the DOM by matching h3 text
+                    const questions = document.querySelectorAll('.question');
+                    questions.forEach(questionDiv => {
+                        const h3 = questionDiv.querySelector('h3');
+                        if (!h3) return;
+                        
+                        const h3Text = h3.textContent.trim();
+                        
+                        // Check if this is the right question (partial match to handle formatting)
+                        if (h3Text.includes(questionTitle.split('–')[0].trim()) || 
+                            questionTitle.includes(h3Text.split('–')[0].trim())) {
+                            
+                            // Restore option selections
+                            if (questionData.selected && Array.isArray(questionData.selected)) {
+                                questionData.selected.forEach(selectedText => {
+                                    const options = questionDiv.querySelectorAll('.options li');
+                                    options.forEach(option => {
+                                        if (option.textContent.trim() === selectedText) {
+                                            option.setAttribute('data-selected', 'true');
+                                            option.setAttribute('aria-pressed', 'true');
+                                            restoredCount++;
+                                            
+                                            // Handle "Other" field visibility
+                                            if (option.getAttribute('data-has-other') === 'true') {
+                                                const otherContainer = questionDiv.querySelector('.other-input-container');
+                                                if (otherContainer) {
+                                                    otherContainer.style.display = 'block';
+                                                }
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                            
+                            // Restore rating selections
+                            if (questionData.ratings) {
+                                Object.keys(questionData.ratings).forEach(ratingLabel => {
+                                    const ratingValue = questionData.ratings[ratingLabel];
+                                    const ratingItems = questionDiv.querySelectorAll('.rating-scale-item');
+                                    
+                                    ratingItems.forEach(item => {
+                                        const label = item.querySelector('.rating-scale-label');
+                                        if (label && label.textContent.trim() === ratingLabel) {
+                                            const buttons = item.querySelectorAll('.rating-btn');
+                                            buttons.forEach(btn => {
+                                                if (btn.getAttribute('data-value') === ratingValue) {
+                                                    btn.setAttribute('data-selected', 'true');
+                                                    restoredCount++;
+                                                }
+                                            });
+                                        }
+                                    });
+                                });
+                            }
+                            
+                            // Restore text inputs
+                            const textInputs = questionDiv.querySelectorAll('.text-input, .text-area');
+                            textInputs.forEach(input => {
+                                // Try to find matching text data by placeholder
+                                Object.keys(questionData).forEach(key => {
+                                    if (key !== 'selected' && key !== 'ratings' && 
+                                        typeof questionData[key] === 'string') {
+                                        if (input.placeholder.includes(key) || 
+                                            key.includes('text_response') ||
+                                            textInputs.length === 1) {
+                                            input.value = questionData[key];
+                                            restoredCount++;
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    });
+                });
+            });
+            
+            console.log(`Restored ${restoredCount} responses`);
+            return restoredCount;
+        }
+        
         // Submit survey
         function submitSurvey(event) {
             const responses = collectResponses();
@@ -2545,16 +2638,48 @@
             input.addEventListener('input', scheduleAutoSave);
         });
         
-        // Load saved progress on page load
+                // Load saved progress on page load
         window.addEventListener('load', () => {
             const saved = loadFromLocalStorage();
             if (saved) {
-                const restore = confirm(`📋 Found saved progress from ${new Date(saved.timestamp).toLocaleString()}\n\nWould you like to restore it?`);
+                const restore = confirm(`📋 Found saved progress from ${new Date(saved.timestamp).toLocaleString()}\n\nWould you like to restore it?`);         
                 if (restore) {
-                    // Note: Full restoration would require more complex logic
-                    // For now, just show the data exists
-                    console.log('Saved data available:', saved);
-                    alert('✓ Progress loaded!\n\nYour previous responses are available in the browser console for reference.');
+                    // Restore all saved responses to the form
+                    const restoredCount = restoreSavedResponses(saved);
+                    
+                    if (restoredCount > 0) {
+                        // Update progress bar after restoration
+                        updateProgress();
+                        
+                        // Show success message
+                        const autoSave = document.getElementById('autoSave');
+                        if (autoSave) {
+                            autoSave.textContent = `✓ Restored ${restoredCount} responses!`;
+                            autoSave.classList.add('show');
+                            setTimeout(() => {
+                                autoSave.classList.remove('show');
+                                autoSave.textContent = '✓ Progress Saved';
+                            }, 3000);
+                        }
+                        
+                        // Scroll to first unanswered question
+                        setTimeout(() => {
+                            const questions = document.querySelectorAll('.question');
+                            for (const q of questions) {
+                                const hasSelection = q.querySelector('[data-selected="true"]');
+                                const hasRating = q.querySelector('.rating-btn[data-selected="true"]');
+                                const textInputs = q.querySelectorAll('.text-input, .text-area');
+                                const hasText = Array.from(textInputs).some(input => input.value && input.value.trim().length > 0);
+                                
+                                if (!hasSelection && !hasRating && !hasText) {
+                                    q.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                    break;
+                                }
+                            }
+                        }, 500);
+                    } else {
+                        alert('⚠️ Could not restore responses.\n\nPlease start fresh or check the console for errors.');
+                    }
                 }
             }
             updateProgress();

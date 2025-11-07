@@ -15,6 +15,10 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         :root {
             /* UAGC Primary Colors */
             --arizona-red: #AB0520;
@@ -73,12 +77,30 @@
             padding: 20px;
         }
         
-        /* Utility bar for logo */
+        /* Utility bar for logo - Fixed/Sticky */
         .utility-bar {
             background: white;
             padding: 20px;
             text-align: center;
             border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0);
+            transition: box-shadow 0.3s ease, padding 0.3s ease;
+        }
+        
+        .utility-bar.scrolled {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 20px;
+        }
+        
+        .utility-bar svg {
+            transition: transform 0.3s ease;
+        }
+        
+        .utility-bar.scrolled svg {
+            transform: scale(0.9);
         }
         
                 header {
@@ -352,6 +374,12 @@
             border-color: var(--secondary-color);
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
             background: var(--highlight-bg);
+            transform: translateY(-2px);
+        }
+        
+        .text-input:hover, .text-area:hover {
+            border-color: var(--secondary-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
         
         .text-area {
@@ -429,9 +457,23 @@
         
         .options li:hover {
             border-color: var(--secondary-color);
-            background: var(--highlight-bg);
-            transform: translateX(4px);
+            background: linear-gradient(135deg, var(--highlight-bg) 0%, rgba(59, 130, 246, 0.05) 100%);
+            transform: translateX(4px) translateZ(0);
             box-shadow: var(--shadow-md);
+        }
+        
+        /* Shimmer effect on hover */
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+        
+        .options li:hover::after {
+            animation: shimmer 2s infinite;
         }
         
         .options li:hover::before {
@@ -580,8 +622,26 @@
         .rating-btn:hover {
             border-color: var(--secondary-color);
             background: var(--highlight-bg);
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.05);
             box-shadow: var(--shadow-sm);
+        }
+        
+        .rating-btn:active {
+            transform: translateY(0) scale(0.95);
+        }
+        
+        /* Ripple effect for rating buttons */
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+        }
+        
+        .rating-btn[data-selected="true"] {
+            animation: ripple 0.6s ease-out;
         }
         
         .rating-btn[data-selected="true"] {
@@ -701,15 +761,28 @@
         }
         
         /* Scroll Progress Bar */
-        .progress-bar {
+                .progress-bar {
             position: fixed;
             top: 0;
             left: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+            background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));                                                                    
             z-index: 9999;
-            transition: width 0.1s ease;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+        
+        @keyframes progressPulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(245, 158, 11, 0.8);
+            }
+        }
+        
+        .progress-bar.pulse {
+            animation: progressPulse 0.6s ease;
         }
         
         /* Progress Indicator */
@@ -2184,6 +2257,10 @@
             const progressText = document.getElementById('progressText');
             
             if (progressBar) {
+                // Trigger pulse animation
+                progressBar.classList.add('pulse');
+                setTimeout(() => progressBar.classList.remove('pulse'), 600);
+                
                 progressBar.style.width = progress.percentage + '%';
                 
                 // Add complete class when at 100%
@@ -2514,15 +2591,27 @@
             window.addEventListener('scroll', updateProgress);
         });
         
-        // Show back-to-top button
+        // Show back-to-top button and handle sticky utility bar
         const backToTop = document.getElementById('backToTop');
+        const utilityBar = document.querySelector('.utility-bar');
+        
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
+            const scrollY = window.pageYOffset;
+            
+            // Back to top button
+            if (scrollY > 300) {
                 if (backToTop) backToTop.style.display = 'flex';
             } else {
                 if (backToTop) backToTop.style.display = 'none';
             }
-        });
+            
+            // Sticky utility bar effect
+            if (scrollY > 50) {
+                utilityBar.classList.add('scrolled');
+            } else {
+                utilityBar.classList.remove('scrolled');
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>

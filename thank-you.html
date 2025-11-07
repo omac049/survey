@@ -551,7 +551,6 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 University of Arizona Global Campus. All rights reserved.</p>
-            <p>Questions? Contact us at <a href="mailto:research@uagc.edu">research@uagc.edu</a></p>
         </div>
     </footer>
 
@@ -585,6 +584,26 @@
                 if (surveyData && surveyData.responses) {
                     const sections = surveyData.responses.sections;
                     
+                    // Get contact information (name) from any section
+                    let firstName = '';
+                    Object.keys(sections).forEach(sectionKey => {
+                        const section = sections[sectionKey];
+                        const nameQuestion = section.find(q => 
+                            q.question && (q.question.includes('Name') || q.question.includes('name'))
+                        );
+                        if (nameQuestion && nameQuestion.answer && !firstName) {
+                            const fullName = Array.isArray(nameQuestion.answer) ? nameQuestion.answer[0] : nameQuestion.answer;
+                            // Extract first name (first word before space)
+                            firstName = fullName.split(' ')[0].trim();
+                        }
+                    });
+                    
+                    // Display first name in header
+                    const userName = document.getElementById('userName');
+                    if (firstName) {
+                        userName.textContent = ', ' + firstName;
+                    }
+                    
                     // Get respondent profile data from Section 1
                     if (sections && sections['1']) {
                         const section1 = sections['1'];
@@ -594,12 +613,6 @@
                         if (roleQuestion && roleQuestion.answer) {
                             const role = Array.isArray(roleQuestion.answer) ? roleQuestion.answer[0] : roleQuestion.answer;
                             document.getElementById('userRole').innerHTML = `<strong>Role:</strong> ${role}`;
-                            
-                            // Add role to header greeting
-                            const userName = document.getElementById('userName');
-                            if (role && role !== 'Other (please specify)') {
-                                userName.textContent = ', ' + role.replace('HR ', '').replace('Lead', 'Lead');
-                            }
                         }
                         
                         // Get industry

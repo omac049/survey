@@ -2473,39 +2473,58 @@
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.textContent = '⏳ Submitting...';
+                submitBtn.style.opacity = '0.7';
             }
+            
+            // Add loading overlay
+            const loadingOverlay = document.createElement('div');
+            loadingOverlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.95);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            `;
+            loadingOverlay.innerHTML = `
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 20px; animation: bounce 1s infinite;">📊</div>
+                    <div style="font-size: 1.5rem; color: var(--primary-color); font-weight: 600;">Submitting Your Responses...</div>
+                </div>
+            `;
+            document.body.appendChild(loadingOverlay);
+            setTimeout(() => loadingOverlay.style.opacity = '1', 10);
             
             // Simulate submission delay (replace with actual API call)
             setTimeout(() => {
                 // Here you would normally send to a server
                 console.log('Survey submitted:', responses);
                 
-                // Mark as submitted in localStorage
+                                // Mark as submitted in localStorage
                 localStorage.setItem('surveySubmitted', JSON.stringify({
                     timestamp: new Date().toISOString(),
-                    progress: progress.percentage
+                    progress: progress.percentage,
+                    responses: responses
                 }));
                 
-                // Show success message
-                alert(
-                    `🎉 Survey Submitted Successfully!\n\n` +
-                    `✓ Completed: ${progress.answered}/${progress.total} questions (${progress.percentage}%)\n` +
-                    `📅 Timestamp: ${new Date().toLocaleString()}\n` +
-                    `📊 Total responses: ${Object.keys(responses.sections).length} sections\n\n` +
-                    `Thank you for your valuable feedback! Your responses have been recorded.`
-                );
-                
-                // Re-enable button
+                // Update button to show success
                 if (submitBtn) {
                     submitBtn.disabled = false;
                     submitBtn.textContent = '✓ Submitted!';
                     submitBtn.classList.add('btn-success');
-                    
-                    setTimeout(() => {
-                        submitBtn.textContent = '✓ Submit Survey';
-                        submitBtn.classList.remove('btn-success');
-                    }, 3000);
                 }
+                
+                // Redirect to thank you page after brief delay
+                setTimeout(() => {
+                    window.location.href = 'thank-you.html';
+                }, 1000);
                 
                 // Optionally clear localStorage after submission
                 // localStorage.removeItem('surveyResponses');

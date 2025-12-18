@@ -130,11 +130,4 @@ This survey will help answer:
 
 ---
 
-## 📞 Contact
-
-**UAGC Research Team**  
-For questions about this survey or the research initiative.
-
----
-
 © 2026 University of Arizona Global Campus

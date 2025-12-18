@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stakeholder Brief – Workforce Capability & Education Alignment Survey (2026)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --arizona-red: #AB0520;
+            --arizona-blue: #0C234B;
+            --highlight-orange: #EF9600;
+            --highlight-sky: #81D3EB;
+            --highlight-blue: #0076A8;
+            --highlight-purple: #621244;
+            --light-gray: #D0D0CE;
+            --dark-gray: #53565A;
+            --river: #007D8A;
+            --silver: #98A4AE;
+            --yellow: #F9E17D;
+            --text-dark: #111827;
+            --text-medium: #6b7280;
+            --background: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --success-green: #10b981;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--background);
+        }
+
+        /* Reading Progress Bar */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--highlight-orange), var(--river));
+            z-index: 10001;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 10px rgba(239, 150, 0, 0.5);
+        }
+
+        /* Sticky Navigation */
+        .sticky-nav {
+            position: fixed;
+            top: 4px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            padding: 12px 20px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sticky-nav.visible {
+            transform: translateY(0);
+        }
+
+        .sticky-nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .sticky-nav-title {
+            font-weight: 700;
+            color: var(--arizona-blue);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sticky-nav-links {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+        }
+
+        .sticky-nav-link {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-medium);
+            background: var(--background);
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .sticky-nav-link:hover, .sticky-nav-link.active {
+            background: var(--arizona-blue);
+            color: white;
+            border-color: var(--arizona-blue);
+        }
+
+        .sticky-nav-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn-primary {
+            background: var(--highlight-orange);
+            color: white;
+        }
+
+        .nav-btn-primary:hover {
+            background: #d68400;
+            transform: translateY(-1px);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Header */
+        header {
+            background: linear-gradient(135deg, var(--arizona-blue) 0%, var(--highlight-blue) 100%);
+            color: white;
+            padding: 80px 20px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--highlight-orange);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(239, 150, 0, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(239, 150, 0, 0); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.35rem;
+            opacity: 0.9;
+            font-weight: 400;
+            max-width: 700px;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 18px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* TL;DR Summary Card */
+        .tldr-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            margin: -60px auto 50px;
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            border: 2px solid var(--highlight-orange);
+        }
+
+        .tldr-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .tldr-badge {
+            background: linear-gradient(135deg, var(--highlight-orange), #d68400);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .tldr-time {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        .tldr-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .tldr-main {
+            padding-right: 30px;
+            border-right: 2px solid var(--border-color);
+        }
+
+        .tldr-main h2 {
+            font-size: 1.5rem;
+            color: var(--arizona-blue);
+            margin-bottom: 16px;
+        }
+
+        .tldr-main p {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .tldr-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tldr-highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--background);
+            border-radius: 12px;
+            border-left: 4px solid var(--river);
+            transition: all 0.2s ease;
+        }
+
+        .tldr-highlight-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .tldr-highlight-item .icon {
+            font-size: 1.5rem;
+        }
+
+        .tldr-highlight-item .text {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .quick-nav-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .quick-nav h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-medium);
+        }
+
+        .quick-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .nav-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px 16px;
+            background: var(--background);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-dark);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-card:hover {
+            border-color: var(--arizona-blue);
+            background: white;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(12, 35, 75, 0.12);
+        }
+
+        .nav-card .nav-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .nav-card .nav-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Section Styles */
+        .section {
+            background: white;
+            padding: 50px;
+            margin: 40px 0;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--arizona-blue), var(--highlight-blue));
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--arizona-blue), var(--highlight-blue));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 12px rgba(12, 35, 75, 0.2);
+        }
+
+        .section-title {
+            flex: 1;
+        }
+
+        .section-title h2 {
+            font-size: 1.75rem;
+            color: var(--arizona-blue);
+            margin-bottom: 4px;
+        }
+
+        .section-title .section-desc {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--arizona-blue);
+            margin: 32px 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3:first-of-type {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--text-dark);
+            font-size: 1.02rem;
+        }
+
+        /* Degree Transition Visual */
+        .degree-transition {
+            background: linear-gradient(135deg, var(--background) 0%, #e8f4f8 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            border: 2px solid var(--border-color);
+        }
+
+        .degree-transition-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .degree-transition-header h3 {
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .degree-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .degree-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .degree-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--arizona-blue), var(--highlight-blue));
+        }
+
+        .degree-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 16px 48px rgba(12, 35, 75, 0.15);
+        }
+
+        .degree-old {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-medium);
+            text-decoration: line-through;
+            opacity: 0.5;
+            margin-bottom: 10px;
+        }
+
+        .degree-arrow {
+            font-size: 2.5rem;
+            color: var(--highlight-orange);
+            margin: 10px 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .degree-new {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--arizona-blue);
+            margin-bottom: 8px;
+        }
+
+        .degree-label {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            margin-bottom: 12px;
+        }
+
+        .degree-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--river), #059669);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Key Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .benefit-card {
+            background: var(--background);
+            border-radius: 14px;
+            padding: 24px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            border-color: var(--arizona-blue);
+            box-shadow: 0 8px 24px rgba(12, 35, 75, 0.1);
+        }
+
+        .benefit-card .benefit-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--arizona-blue);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card h4 {
+            font-size: 1.1rem;
+            color: var(--arizona-blue);
+            margin-bottom: 8px;
+        }
+
+        .benefit-card p {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            margin: 0;
+        }
+
+        /* Comparison Table */
+        .comparison-container {
+            margin: 30px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--arizona-blue), var(--highlight-blue));
+            color: white;
+        }
+
+        th {
+            padding: 18px 20px;
+            text-align: left;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+            background: white;
+        }
+
+        tbody tr {
+            transition: all 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: var(--background);
+        }
+
+        tbody tr:hover td {
+            background: var(--background);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .old-value {
+            color: var(--text-medium);
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .new-value {
+            color: var(--arizona-blue);
+            font-weight: 600;
+        }
+
+        .change-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            color: #059669;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Stats Grid */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--arizona-blue), var(--highlight-blue));
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 24px rgba(12, 35, 75, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .stat-value {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Audience Tags */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .audience-card {
+            background: var(--background);
+            border: 2px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .audience-card:hover {
+            border-color: var(--arizona-blue);
+            background: white;
+            box-shadow: 0 8px 24px rgba(12, 35, 75, 0.1);
+        }
+
+        .audience-card .audience-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .audience-card .audience-title {
+            font-weight: 700;
+            color: var(--arizona-blue);
+            margin-bottom: 6px;
+        }
+
+        .audience-card .audience-desc {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+        }
+
+        /* Use Cases */
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        .use-case {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .use-case:hover {
+            border-color: var(--highlight-orange);
+            box-shadow: 0 8px 30px rgba(239, 150, 0, 0.12);
+        }
+
+        .use-case-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .use-case-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--highlight-orange), #d68400);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .use-case h4 {
+            font-size: 1.15rem;
+            color: var(--arizona-blue);
+        }
+
+        .use-case ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .use-case li {
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text-dark);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .use-case li:last-child {
+            border-bottom: none;
+        }
+
+        .use-case li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: 700;
+        }
+
+        /* Roadmap / Next Steps */
+        .roadmap {
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .roadmap-phase {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .phase-marker {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .phase-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--arizona-blue), var(--highlight-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 800;
+            box-shadow: 0 4px 16px rgba(12, 35, 75, 0.25);
+            position: relative;
+            z-index: 2;
+        }
+
+        .phase-line {
+            width: 3px;
+            flex: 1;
+            background: var(--border-color);
+            margin-top: 10px;
+        }
+
+        .roadmap-phase:last-child .phase-line {
+            display: none;
+        }
+
+        .phase-content {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .phase-content:hover {
+            border-color: var(--arizona-blue);
+            box-shadow: 0 8px 30px rgba(12, 35, 75, 0.1);
+        }
+
+        .phase-content h4 {
+            font-size: 1.2rem;
+            color: var(--arizona-blue);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .phase-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 10px;
+        }
+
+        .phase-content li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--background);
+            border-radius: 10px;
+        }
+
+        .phase-content li .step-num {
+            width: 26px;
+            height: 26px;
+            background: var(--highlight-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--arizona-blue), var(--highlight-purple));
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            color: white;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="60" height="60" fill="url(%23dots)"/></svg>');
+        }
+
+        .cta-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            justify-content: center;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--arizona-blue);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-light:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--arizona-blue);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 8px;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--arizona-blue);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 16px rgba(12, 35, 75, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            background: var(--highlight-blue);
+        }
+
+        /* Print Styles */
+        @media print {
+            .sticky-nav, .back-to-top, .reading-progress, .cta-section {
+                display: none !important;
+            }
+            
+            body {
+                background: white;
+            }
+            
+            .section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .tldr-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .tldr-main {
+                padding-right: 0;
+                border-right: none;
+                padding-bottom: 24px;
+                border-bottom: 2px solid var(--border-color);
+            }
+            
+            .degree-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .audience-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .use-cases {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 30px 24px;
+            }
+            
+            .sticky-nav-links {
+                display: none;
+            }
+            
+            .stats-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .roadmap-phase {
+                grid-template-columns: 60px 1fr;
+                gap: 20px;
+            }
+            
+            .phase-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Reading Progress -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky-nav" id="stickyNav">
+        <div class="sticky-nav-content">
+            <div class="sticky-nav-title">
+                <span>📋</span>
+                <span>Stakeholder Brief</span>
+            </div>
+            <div class="sticky-nav-links">
+                <a href="#summary" class="sticky-nav-link">Summary</a>
+                <a href="#strategy" class="sticky-nav-link">Strategy</a>
+                <a href="#changes" class="sticky-nav-link">Changes</a>
+                <a href="#audience" class="sticky-nav-link">Audience</a>
+                <a href="#next-steps" class="sticky-nav-link">Next Steps</a>
+            </div>
+            <div class="sticky-nav-actions">
+                <a href="survey-v2.html" class="nav-btn nav-btn-primary">View Survey →</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="badge">Stakeholder Brief</div>
+            <h1>Workforce Capability & Education Alignment Survey</h1>
+            <p class="subtitle">2026 Research Initiative — Complete Survey Restructure for Professional Studies Transition</p>
+            
+            <div class="meta-info">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <strong>December 2025</strong>
+                </div>
+                <div class="meta-item">
+                    <span>📋</span>
+                    <strong>Version 3.0</strong>
+                </div>
+                <div class="meta-item">
+                    <span>✅</span>
+                    <strong>Ready for Review</strong>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- TL;DR Summary -->
+        <div class="tldr-card" id="summary">
+            <div class="tldr-header">
+                <span class="tldr-badge">TL;DR</span>
+                <span class="tldr-time">⏱️ 30-second summary</span>
+            </div>
+            
+            <div class="tldr-content">
+                <div class="tldr-main">
+                    <h2>What You Need to Know</h2>
+                    <p>The survey has been <strong>completely restructured</strong> to support UAGC's transition to <strong>Professional Studies degrees</strong> (APS/BPS/MPS) and the <strong>90-credit bachelor's pilot</strong>. Instead of asking HR managers about online vs. traditional degrees, we now survey broader workforce leaders about capability gaps, applied education value, and partnership opportunities.</p>
+                </div>
+                
+                <div class="tldr-highlights">
+                    <div class="tldr-highlight-item">
+                        <span class="icon">🎯</span>
+                        <span class="text">Aligned with BPS/MPS naming transition</span>
+                    </div>
+                    <div class="tldr-highlight-item">
+                        <span class="icon">📊</span>
+                        <span class="text">90-credit pathway awareness questions</span>
+                    </div>
+                    <div class="tldr-highlight-item">
+                        <span class="icon">🤝</span>
+                        <span class="text">Partnership pipeline identification</span>
+                    </div>
+                    <div class="tldr-highlight-item">
+                        <span class="icon">💬</span>
+                        <span class="text">Featured quotes for content marketing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Degree Transition Section -->
+        <section id="degree-transition" class="section">
+            <div class="section-header">
+                <div class="section-icon">🎓</div>
+                <div class="section-title">
+                    <h2>The Degree Naming Transition</h2>
+                    <p class="section-desc">UAGC is transitioning to Professional Studies nomenclature</p>
+                </div>
+            </div>
+
+            <div class="degree-transition">
+                <div class="degree-transition-header">
+                    <h3>🔄 What's Changing</h3>
+                </div>
+                
+                <div class="degree-cards">
+                    <div class="degree-card">
+                        <div class="degree-old">AA</div>
+                        <div class="degree-arrow">↓</div>
+                        <div class="degree-new">APS</div>
+                        <div class="degree-label">Associate of Professional Studies</div>
+                        <span class="degree-badge">60 Credits</span>
+                    </div>
+                    
+                    <div class="degree-card">
+                        <div class="degree-old">BA/BS</div>
+                        <div class="degree-arrow">↓</div>
+                        <div class="degree-new">BPS</div>
+                        <div class="degree-label">Bachelor of Professional Studies</div>
+                        <span class="degree-badge">90 Credits — Pilot</span>
+                    </div>
+                    
+                    <div class="degree-card">
+                        <div class="degree-old">MA/MS</div>
+                        <div class="degree-arrow">↓</div>
+                        <div class="degree-new">MPS</div>
+                        <div class="degree-label">Master of Professional Studies</div>
+                        <span class="degree-badge">Aligned</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>📈 Survey Purpose</h3>
+            <p>This survey generates critical data to support the transition:</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-num">1</span>
+                    <h4>Validate Market Positioning</h4>
+                    <p>Establish baseline perception of workforce-aligned education among employers</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-num">2</span>
+                    <h4>Support Content Marketing</h4>
+                    <p>Collect employer-endorsed insights and featured quotes for authentic content</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-num">3</span>
+                    <h4>Inform Partnership Development</h4>
+                    <p>Identify organizations interested in education-industry collaboration</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-num">4</span>
+                    <h4>Build 90-Credit Credibility</h4>
+                    <p>Measure awareness and perceived value of accelerated bachelor pathways</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Alignment -->
+        <section id="strategy" class="section">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <div class="section-title">
+                    <h2>Strategic Alignment</h2>
+                    <p class="section-desc">How the survey connects to SEO & marketing strategy</p>
+                </div>
+            </div>
+
+            <p>Based on the <a href="https://omac049.github.io/ps-degree-naming-seo-impact-analysis/seo-impact-report.html" target="_blank">Professional Studies Degree Naming SEO Impact Analysis</a>, this survey directly supports key strategic priorities:</p>
+
+            <div class="comparison-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Strategic Priority</th>
+                            <th>How Survey Supports It</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>BPS/MPS Market Education</strong></td>
+                            <td>Questions establish employer perception baseline of applied degree programs <span class="change-indicator">✓ Key Data</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>90-Credit Pathway Differentiation</strong></td>
+                            <td>Dedicated questions measure awareness and perceived value of accelerated bachelor's <span class="change-indicator">✓ First-Mover</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Content Marketing Fuel</strong></td>
+                            <td>Open-ended insights + featured quotes for authentic content creation <span class="change-indicator">✓ Quotes</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Partnership Pipeline</strong></td>
+                            <td>Partnership interest questions identify collaboration-ready organizations <span class="change-indicator">✓ Leads</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>🔍 Key Insights We'll Capture</h3>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-num">1</span>
+                    <h4>Workforce Capability Gaps</h4>
+                    <p>What skills/capability challenges do organizations face?</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-num">2</span>
+                    <h4>Applied Education Perception</h4>
+                    <p>How do employers view Professional Studies vs. traditional degrees?</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-num">3</span>
+                    <h4>90-Credit Awareness</h4>
+                    <p>How familiar are employers with accelerated bachelor pathways?</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-num">4</span>
+                    <h4>Partnership Appetite</h4>
+                    <p>What types of education-industry partnerships are valued?</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Changed -->
+        <section id="changes" class="section">
+            <div class="section-header">
+                <div class="section-icon">📝</div>
+                <div class="section-title">
+                    <h2>What Changed: v2 → v3</h2>
+                    <p class="section-desc">Complete survey restructure for 2026</p>
+                </div>
+            </div>
+
+            <h3>🔄 Focus Shift Overview</h3>
+            <div class="comparison-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Previous Focus (v2)</th>
+                            <th></th>
+                            <th>New Focus (v3)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="old-value">HR Managers & Hiring</td>
+                            <td style="text-align: center;">→</td>
+                            <td class="new-value">Workforce Leaders & Capability</td>
+                        </tr>
+                        <tr>
+                            <td class="old-value">Online vs. Traditional Degrees</td>
+                            <td style="text-align: center;">→</td>
+                            <td class="new-value">Applied/Professional Studies Education</td>
+                        </tr>
+                        <tr>
+                            <td class="old-value">Hiring Practices</td>
+                            <td style="text-align: center;">→</td>
+                            <td class="new-value">Workforce Readiness & Skills Alignment</td>
+                        </tr>
+                        <tr>
+                            <td class="old-value">Degree Credibility</td>
+                            <td style="text-align: center;">→</td>
+                            <td class="new-value">Education-Industry Partnership Potential</td>
+                        </tr>
+                        <tr>
+                            <td class="old-value">Microcredentials</td>
+                            <td style="text-align: center;">→</td>
+                            <td class="new-value">90-Credit Pathways & Accelerated Programs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>📋 Section-by-Section Changes</h3>
+            <div class="comparison-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">Section</th>
+                            <th>Previous (v2)</th>
+                            <th>New (v3)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1</strong></td>
+                            <td class="old-value">Respondent & Organization Profile (HR focus)</td>
+                            <td class="new-value">Respondent & Organizational Context (Workforce leadership)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2</strong></td>
+                            <td class="old-value">Awareness & Credibility of Online Degrees</td>
+                            <td class="new-value">Workforce Capability & Readiness</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3</strong></td>
+                            <td class="old-value">Hiring & Compensation Practices</td>
+                            <td class="new-value">Perception of Applied & Workforce-Aligned Education</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4</strong></td>
+                            <td class="old-value">Graduate vs. Undergraduate Online Programs</td>
+                            <td class="new-value">Learning, Upskilling & Organizational Performance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5</strong></td>
+                            <td class="old-value">Microcredentials & Upskilling</td>
+                            <td class="new-value">Education–Industry Partnership Potential</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6</strong></td>
+                            <td class="old-value">Learning & Development Investment</td>
+                            <td class="new-value">Future Outlook on Workforce Education</td>
+                        </tr>
+                        <tr>
+                            <td><strong>7</strong></td>
+                            <td class="old-value">Future Outlook & Employer Expectations</td>
+                            <td class="new-value">Open Insight (qualitative)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8</strong></td>
+                            <td class="old-value">Featured Quote Opportunity</td>
+                            <td class="new-value">Featured Insight Opportunity (updated messaging)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Target Audience -->
+        <section id="audience" class="section">
+            <div class="section-header">
+                <div class="section-icon">👥</div>
+                <div class="section-title">
+                    <h2>Target Respondents</h2>
+                    <p class="section-desc">Expanded audience beyond HR managers</p>
+                </div>
+            </div>
+
+            <p>The new survey targets a <strong>broader range of workforce leaders</strong> who influence learning strategy and education partnerships:</p>
+
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="audience-icon">📊</div>
+                    <div class="audience-title">Workforce Strategy</div>
+                    <div class="audience-desc">Workforce planning, talent capability development</div>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">📚</div>
+                    <div class="audience-title">Learning & Development</div>
+                    <div class="audience-desc">Training, upskilling initiatives</div>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">⚙️</div>
+                    <div class="audience-title">Operations Leadership</div>
+                    <div class="audience-desc">Business unit leaders with workforce responsibility</div>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">🚀</div>
+                    <div class="audience-title">Strategy & Transformation</div>
+                    <div class="audience-desc">Innovation, organizational change</div>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">👔</div>
+                    <div class="audience-title">Executive Leadership</div>
+                    <div class="audience-desc">C-suite and senior leaders</div>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">🤝</div>
+                    <div class="audience-title">Partnership Roles</div>
+                    <div class="audience-desc">Education, workforce, industry partnerships</div>
+                </div>
+            </div>
+
+            <h3>📏 Survey Specifications</h3>
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-value">10-12</div>
+                    <div class="stat-label">Minutes to Complete</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">Total Sections</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">18</div>
+                    <div class="stat-label">Questions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">✓</div>
+                    <div class="stat-label">WCAG Accessible</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Use Results -->
+        <section id="usage" class="section">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <div class="section-title">
+                    <h2>How to Use Survey Results</h2>
+                    <p class="section-desc">Actionable outputs for multiple teams</p>
+                </div>
+            </div>
+
+            <div class="use-cases">
+                <div class="use-case">
+                    <div class="use-case-header">
+                        <div class="use-case-icon">📣</div>
+                        <h4>Content Marketing</h4>
+                    </div>
+                    <ul>
+                        <li>Research briefs and whitepapers</li>
+                        <li>Blog posts and social media content</li>
+                        <li>Landing page testimonials</li>
+                        <li>Sales enablement materials</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case">
+                    <div class="use-case-header">
+                        <div class="use-case-icon">🔍</div>
+                        <h4>SEO & Landing Pages</h4>
+                    </div>
+                    <ul>
+                        <li>"What is a BPS?" — Employer perspectives</li>
+                        <li>"Is 90-credit accepted?" — Validation data</li>
+                        <li>Career outcomes — Skill alignment proof</li>
+                        <li>Objection handling content</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case">
+                    <div class="use-case-header">
+                        <div class="use-case-icon">🤝</div>
+                        <h4>Partnership Development</h4>
+                    </div>
+                    <ul>
+                        <li>Identify collaboration-ready organizations</li>
+                        <li>Valued partnership types data</li>
+                        <li>Priority skill domains for curriculum</li>
+                        <li>Warm outreach list generation</li>
+                    </ul>
+                </div>
+                
+                <div class="use-case">
+                    <div class="use-case-header">
+                        <div class="use-case-icon">📈</div>
+                        <h4>Internal Strategy</h4>
+                    </div>
+                    <ul>
+                        <li>Program positioning refinement</li>
+                        <li>Priority skill areas for curriculum</li>
+                        <li>Partnership outreach targeting</li>
+                        <li>Messaging validation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Steps -->
+        <section id="next-steps" class="section">
+            <div class="section-header">
+                <div class="section-icon">🚀</div>
+                <div class="section-title">
+                    <h2>Next Steps</h2>
+                    <p class="section-desc">Roadmap for survey deployment and analysis</p>
+                </div>
+            </div>
+
+            <div class="roadmap">
+                <div class="roadmap-phase">
+                    <div class="phase-marker">
+                        <div class="phase-number">1</div>
+                        <div class="phase-line"></div>
+                    </div>
+                    <div class="phase-content">
+                        <h4>🔍 Review & Approve</h4>
+                        <ul>
+                            <li><span class="step-num">A</span> Stakeholder review of updated survey</li>
+                            <li><span class="step-num">B</span> Confirm question wording and flow</li>
+                            <li><span class="step-num">C</span> Approve final version for pilot</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="roadmap-phase">
+                    <div class="phase-marker">
+                        <div class="phase-number">2</div>
+                        <div class="phase-line"></div>
+                    </div>
+                    <div class="phase-content">
+                        <h4>🧪 Pilot Testing</h4>
+                        <ul>
+                            <li><span class="step-num">A</span> Test with small sample (10-15 respondents)</li>
+                            <li><span class="step-num">B</span> Gather feedback on clarity and timing</li>
+                            <li><span class="step-num">C</span> Make final adjustments</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="roadmap-phase">
+                    <div class="phase-marker">
+                        <div class="phase-number">3</div>
+                        <div class="phase-line"></div>
+                    </div>
+                    <div class="phase-content">
+                        <h4>📤 Full Deployment</h4>
+                        <ul>
+                            <li><span class="step-num">A</span> Identify distribution channels and lists</li>
+                            <li><span class="step-num">B</span> Set response rate and completion targets</li>
+                            <li><span class="step-num">C</span> Launch survey campaign</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="roadmap-phase">
+                    <div class="phase-marker">
+                        <div class="phase-number">4</div>
+                    </div>
+                    <div class="phase-content">
+                        <h4>📊 Analysis & Action</h4>
+                        <ul>
+                            <li><span class="step-num">A</span> Aggregate and analyze responses</li>
+                            <li><span class="step-num">B</span> Create research brief and content</li>
+                            <li><span class="step-num">C</span> Contact high-interest partnership leads</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3>Ready to Review the Survey?</h3>
+            <p>Preview the updated survey or access the SEO strategy analysis that informed these changes.</p>
+            <div class="cta-buttons">
+                <a href="survey-v2.html" class="btn btn-light">📋 View Survey</a>
+                <a href="https://omac049.github.io/ps-degree-naming-seo-impact-analysis/seo-impact-report.html" target="_blank" class="btn btn-outline">📊 SEO Analysis</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p><strong>UAGC Research Team</strong></p>
+            <p>For questions about this survey or the research initiative</p>
+            <p style="margin-top: 16px; font-size: 0.85rem; opacity: 0.7;">© 2026 University of Arizona Global Campus | Last Updated: December 2025</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <script>
+        // Reading Progress Bar
+        function updateReadingProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('readingProgress').style.width = progress + '%';
+        }
+
+        // Sticky Navigation
+        function updateStickyNav() {
+            const stickyNav = document.getElementById('stickyNav');
+            const scrollY = window.scrollY;
+            
+            if (scrollY > 400) {
+                stickyNav.classList.add('visible');
+            } else {
+                stickyNav.classList.remove('visible');
+            }
+
+            // Update active link
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.sticky-nav-link');
+            
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 150 && rect.bottom >= 150) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + section.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        // Back to Top Button
+        function updateBackToTop() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+
+        // Scroll event listeners
+        window.addEventListener('scroll', () => {
+            updateReadingProgress();
+            updateStickyNav();
+            updateBackToTop();
+        }, { passive: true });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80; // Account for sticky nav
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        updateReadingProgress();
+    </script>
+</body>
+</html>
